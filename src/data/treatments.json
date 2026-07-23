@@ -1,0 +1,448 @@
+[
+  {
+    "slug": "acne-treatment",
+    "title": "Acne Treatment",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Bespoke medical programs targeting active acne, reducing inflammation, and preventing breakouts.",
+    "description": "Acne is a complex skin condition affecting millions. Our dermatologist-led active acne management plans combine clinical grade topicals, oral medications, and state-of-the-art light/laser therapies to regulate sebum, kill C. acnes bacteria, and restore your skin barrier.",
+    "symptoms": ["Pimples, blackheads, and whiteheads", "Painful cysts or nodules under the skin", "Redness and active inflammation", "Post-inflammatory hyperpigmentation (PIH)"],
+    "causes": ["Excess sebum (oil) production", "Clogged hair follicles due to dead skin cells", "Bacterial overgrowth (Cutibacterium acnes)", "Hormonal imbalances, stress, and dietary factors"],
+    "diagnosis": "Clinical evaluation of skin type, lesion count (comedones vs. inflammatory papules/cysts), lifestyle history, and potential underlying endocrine factors (e.g., PCOS).",
+    "treatmentOptions": [
+      { "name": "Medical Grade Topicals", "details": "Retinoids, Benzoyl Peroxide, and Salicylic Acid customized to skin tolerance." },
+      { "name": "Oral Therapies", "details": "Antibiotics, hormonal regulators, or low-dose oral retinoids for severe cystic acne." },
+      { "name": "Comedone Extraction & Peels", "details": "Clinical extraction under sterile conditions combined with salicylic/glycolic chemical peels." }
+    ],
+    "recovery": "Minimal downtime. Mild flaking or redness may occur for 2-3 days depending on chemical peels or laser settings.",
+    "benefits": ["Significant reduction in active breakouts", "Minimized pore size and smoother texture", "Prevention of permanent acne scarring", "Regulation of skin's natural oil production"],
+    "expectedResults": "Visible improvement in active acne within 4-6 weeks, with optimal skin clearance achieved after 3-4 sessions.",
+    "faqs": [
+      { "question": "How many sessions will I need?", "answer": "Usually 3 to 6 sessions spaced 2 to 4 weeks apart are recommended for moderate acne." },
+      { "question": "Will my acne return after treatment?", "answer": "We provide a customized maintenance skincare plan to manage hormonal triggers and keep breakouts at bay." }
+    ]
+  },
+  {
+    "slug": "acne-scar-removal",
+    "title": "Acne Scar Removal",
+    "category": "Laser & Aesthetics",
+    "shortDescription": "Advanced scar remodeling using Fractional CO2, Subcision, and Microneedling RF.",
+    "description": "Acne scars are permanent texture changes resulting from severe inflammatory acne. We utilize a combination approach (Subcision, Fractional CO2 lasers, and Microneedling Radiofrequency) to break fibrotic bands and stimulate fresh collagen synthesis.",
+    "symptoms": ["Atrophic scars (boxcar, icepick, rolling)", "Hypertrophic scars (raised, thick tissue)", "Uneven skin texture and shadowing"],
+    "causes": ["Deep skin tissue damage from cystic acne", "Picking or squeezing active pimples", "Delayed treatment of severe inflammatory acne"],
+    "diagnosis": "Visual mapping of scar types under side-lighting to identify tethered scars, rolling scars, and icepick scars.",
+    "treatmentOptions": [
+      { "name": "Fractional CO2 Laser", "details": "Precision laser resurfacing that vaporizes micro-zones of scar tissue to trigger remodeling." },
+      { "name": "Microneedling RF (MNRF)", "details": "Delivers insulated radiofrequency energy deep into the dermis, protecting the epidermis." },
+      { "name": "Subcision", "details": "Surgical release of fibrotic bands holding down rolling scars using a specialized needle." }
+    ],
+    "recovery": "Downtime of 4-7 days. Expect redness, micro-crusting, and mild swelling, which resolve with post-care creams.",
+    "benefits": ["Up to 70-80% improvement in scar depth", "Re-texturized, smoother skin surface", "Enhanced skin elasticity and collagen density"],
+    "expectedResults": "Collagen remodeling takes time. Improvements start showing after 4 weeks and continue to mature for up to 6 months post-treatment.",
+    "faqs": [
+      { "question": "Are the results permanent?", "answer": "Yes, scar remodeling stimulates your own collagen, making the structural improvements permanent." },
+      { "question": "Is the treatment painful?", "answer": "We apply a strong topical numbing cream for 45 minutes prior, making the procedure highly tolerable." }
+    ]
+  },
+  {
+    "slug": "pigmentation",
+    "title": "Pigmentation & Skin Tone Correction",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Targeted therapies to fade dark spots, sun damage, and uneven skin tone.",
+    "description": "Hyperpigmentation is caused by an overproduction of melanin. Our clinic offers Q-Switched Nd:YAG lasers, targeted chemical peeling agent complexes, and pharmaceutical brightening routines to precisely fade excess pigments without damaging surrounding skin.",
+    "symptoms": ["Dark spots or sun spots", "Uneven skin tone", "Post-inflammatory dark patches"],
+    "causes": ["Chronic UV radiation (sun exposure)", "Hormonal shifts or post-acne inflammation", "Skin trauma, friction, or harsh cosmetic products"],
+    "diagnosis": "Wood's Lamp examination or digital skin analysis to determine whether hyperpigmentation is epidermal (superficial) or dermal (deep).",
+    "treatmentOptions": [
+      { "name": "Q-Switched Nd:YAG Laser", "details": "Ultra-short laser pulses that shatter pigment particles, allowing the body to naturally clear them." },
+      { "name": "Medical Peels", "details": "Formulations containing Kojic Acid, Retinol, and Vitamin C to exfoliate and block melanin synthesis." }
+    ],
+    "recovery": "No downtime to minimal flaking for 2 days. Sunscreen compliance is absolutely mandatory.",
+    "benefits": ["Fades dark spots and sun patches", "Creates an even, radiant complexion", "Prevents future melanin overproduction"],
+    "expectedResults": "Gradual fading of dark spots after each session, with significant improvement seen within 3-5 sessions.",
+    "faqs": [
+      { "question": "Can pigments reappear?", "answer": "Yes, if the skin is exposed to direct sun without sunscreen. Strict sun protection is key to maintaining results." }
+    ]
+  },
+  {
+    "slug": "melasma",
+    "title": "Melasma Management",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Specialized protocols for stubborn, hormone-induced facial hyperpigmentation.",
+    "description": "Melasma is a chronic skin condition presenting as symmetrical brown patches on the cheeks, forehead, and upper lip. Because it is highly sensitive to heat and hormones, we treat it gently using low-energy Q-switched lasers, medical depigmenting peels, and strict sun block regimens.",
+    "symptoms": ["Symmetrical dark brown patches on cheeks, nose, forehead, and upper lip", "Pigmentation that worsens with sun or heat exposure"],
+    "causes": ["Hormonal fluctuations (pregnancy, oral contraceptives)", "Genetics and family history", "UV light, visible blue light, and heat"],
+    "diagnosis": "Clinical presentation and assessment of pigment depth using digital dermoscopy.",
+    "treatmentOptions": [
+      { "name": "Depigmenting Peels (e.g., Cosmelan)", "details": "A premium two-phase peeling system that inhibits the enzyme tyrosinase to stop pigment production." },
+      { "name": "Laser Toning", "details": "Gentle, non-ablative laser passes that break up pigments without generating excessive heat." }
+    ],
+    "recovery": "Varies. Cosmelan peel causes active peeling for 5-7 days. Laser toning has zero downtime.",
+    "benefits": ["Visibly clears stubborn patches", "Regulates melanocyte activity", "Restores confidence with uniform skin tone"],
+    "expectedResults": "Significant fading within 2-4 weeks, followed by a personalized long-term maintenance routine to prevent relapse.",
+    "faqs": [
+      { "question": "Can melasma be cured completely?", "answer": "Melasma is a chronic condition. It cannot be cured permanently, but it can be controlled and cleared up to 90% with proper maintenance." }
+    ]
+  },
+  {
+    "slug": "psoriasis",
+    "title": "Psoriasis Treatment",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Evidence-based medical management to control flare-ups and soothe plaque scaling.",
+    "description": "Psoriasis is an autoimmune skin condition that accelerates skin cell turnover, leading to silver-scaled plaques. We provide systemic therapies, biologic injectables, targeted topicals, and phototherapy guidance to quiet the immune response and clear the plaques.",
+    "symptoms": ["Red patches covered with thick, silvery scales", "Dry, cracked skin that may bleed or itch", "Thickened, pitted, or ridged nails", "Swollen and stiff joints (psoriatic arthritis)"],
+    "causes": ["Autoimmune systemic inflammation", "Genetic predisposition", "Triggers like stress, skin injuries, infections, or cold weather"],
+    "diagnosis": "Clinical evaluation of plaques, nail check, joint assessment, and occasionally a small skin biopsy.",
+    "treatmentOptions": [
+      { "name": "Targeted Topical Therapy", "details": "Corticosteroids, Coal Tar, and Vitamin D analogues to slow down cell proliferation." },
+      { "name": "Systemic Medications & Biologics", "details": "Modern biologic injections that precisely block inflammatory cytokines for severe, resistant cases." }
+    ],
+    "recovery": "No downtime. Medical management focuses on ongoing control and reducing inflammation.",
+    "benefits": ["Clears scaly plaques and reduces redness", "Relieves persistent itching and physical discomfort", "Prevents joint complications"],
+    "expectedResults": "Scaling and itching decrease in 2-4 weeks, with plaque clearance visible in 2-3 months of customized therapy.",
+    "faqs": [
+      { "question": "Is psoriasis contagious?", "answer": "No, psoriasis is an autoimmune genetic condition and cannot be spread from person to person." }
+    ]
+  },
+  {
+    "slug": "vitiligo",
+    "title": "Vitiligo & Depigmentation Therapy",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Advanced medical and surgical therapies to restore pigment to white patches.",
+    "description": "Vitiligo occurs when melanocytes (pigment-producing cells) are destroyed by the immune system. We specialize in stabilizing active spread using medical protocols and inducing repigmentation via targeted phototherapy, excimer lasers, and advanced melanocyte transplantation surgery.",
+    "symptoms": ["Patchy loss of skin color, usually appearing first on hands, face, and body openings", "Premature whitening or graying of hair on scalp, eyelashes, or eyebrows"],
+    "causes": ["Autoimmune attack on melanocytes", "Genetic factors", "Oxidative stress triggers in the skin"],
+    "diagnosis": "Wood's Lamp exam to evaluate depigmented margins, thyroid/autoimmune panels, and disease activity score.",
+    "treatmentOptions": [
+      { "name": "Excimer Light / Laser", "details": "Targeted narrow-band UVB light applied directly to vitiligo patches to stimulate pigmentation." },
+      { "name": "Melanocyte Keratinocyte Transplant (MKCS)", "details": "Surgical grafting of healthy pigment cells into stable vitiligo patches." }
+    ],
+    "recovery": "Laser: No downtime. Surgical graft: 7-10 days of dressing and restricted movement of the treated area.",
+    "benefits": ["Restores natural skin color to white patches", "Halts the spread of active depigmentation", "High success rate in stable patches"],
+    "expectedResults": "Pigmentation dots appear within 6-12 weeks of excimer light therapy; surgical grafts show full color blending in 3-6 months.",
+    "faqs": [
+      { "question": "Who is a candidate for vitiligo surgery?", "answer": "Patients with stable vitiligo (no new patches or expansion of old patches for at least 12 months) are ideal candidates." }
+    ]
+  },
+  {
+    "slug": "eczema",
+    "title": "Eczema (Atopic Dermatitis) Care",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Soothing clinical solutions to restore the skin barrier and relieve severe itching.",
+    "description": "Eczema is a chronic inflammatory skin condition marked by a compromised skin barrier, leading to intense itching and red, dry flares. Our protocols focus on barrier restoration creams, allergen identification, anti-inflammatory topicals, and modern biological therapies.",
+    "symptoms": ["Intense, persistent itching", "Dry, red, cracked, or scaly patches", "Small, raised bumps that may leak fluid when scratched", "Thickened, leathery skin (lichenification)"],
+    "causes": ["Genetics affecting the skin's barrier function", "Immune system overreactivity to environmental triggers", "Extreme dryness, soaps, fragrances, and allergens"],
+    "diagnosis": "Comprehensive clinical evaluation of skin lesion patterns, itch severity, and allergy screening.",
+    "treatmentOptions": [
+      { "name": "Barrier Repair Therapy", "details": "Ceramide-dominant medical moisturizers combined with wet wraps to trap hydration." },
+      { "name": "Anti-inflammatory Topicals", "details": "Prescription steroid-free ointments (calcineurin inhibitors) to quiet localized flare-ups." }
+    ],
+    "recovery": "Zero procedural downtime. Focus is on reducing skin irritability and dryness.",
+    "benefits": ["Rapid relief from intense itching", "Heals cracked, bleeding, and weeping skin", "Strengthens and repairs the natural skin barrier"],
+    "expectedResults": "Itching reduces within 48 hours of starting prescription therapy, and eczema patches heal within 1-2 weeks.",
+    "faqs": [
+      { "question": "Can certain foods trigger my eczema?", "answer": "Yes, in some individuals, food allergens can flare eczema. We can guide you through allergy testing if indicated." }
+    ]
+  },
+  {
+    "slug": "skin-allergy",
+    "title": "Skin Allergy Specialist",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Comprehensive patch testing and allergen identification for contact dermatitis.",
+    "description": "Allergic skin reactions can cause hives, swelling, or localized rashes. We offer comprehensive Patch Testing to isolate chemical, cosmetic, or environmental contact allergens, alongside immediate antihistamine regimens and barrier healing therapies.",
+    "symptoms": ["Red, itchy, or bumpy rashes", "Hives or raised welts on the skin (Urticaria)", "Swelling of the lips, eyes, or face (Angioedema)", "Dry, leathery, cracked skin from chronic contact"],
+    "causes": ["Hypersensitivity reaction to metals, fragrances, preservatives, latex, or medications", "Allergens like pollen, pet dander, or specific foods"],
+    "diagnosis": "Detailed clinical history combined with Patch Testing (applying allergen panels to the back for 48 hours) to find contact triggers.",
+    "treatmentOptions": [
+      { "name": "Allergen Identification (Patch Test)", "details": "Testing 30+ common contact allergens to isolate the exact cause of chronic rashes." },
+      { "name": "Targeted Antihistamines & Topicals", "details": "Prompt oral and topical treatments to quiet histaminic response and soothe skin." }
+    ],
+    "recovery": "Patch test requires keeping the back dry for 48-72 hours. No down time for medical treatments.",
+    "benefits": ["Identifies exact chemical triggers to avoid", "Provides rapid relief from acute hives and swelling", "Restores normal skin immunology"],
+    "expectedResults": "Acute allergic symptoms resolve in 3-5 days. Identifying and removing contact allergens prevents long-term recurrence.",
+    "faqs": [
+      { "question": "What is the difference between a prick test and a patch test?", "answer": "Prick tests diagnose immediate allergies (like food or pollen) via the blood/mast cells. Patch tests diagnose delayed contact allergies (like cosmetics or jewelry metals) on the skin." }
+    ]
+  },
+  {
+    "slug": "fungal-infection",
+    "title": "Fungal Infection Treatment",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Complete clearance of ringworm, candidiasis, and stubborn tinea infections.",
+    "description": "Fungal infections like Tinea (ringworm) and Candida can be highly recurrent due to humidity and improper steroid use. We provide precise medical mycological testing and customized oral and topical antifungal therapies to ensure complete, permanent clearance.",
+    "symptoms": ["Red, itchy, circular rashes with raised edges", "Peeling, cracking, or scaling skin between toes or in body folds", "Discolored, thickened, or brittle nails"],
+    "causes": ["Overgrowth of dermatophytes or yeasts on the skin", "Hot, humid climates and sweaty clothing", "Sharing personal items like towels, or using steroid-cocktail creams"],
+    "diagnosis": "Clinical evaluation, KOH examination (scraping skin cells to view fungal hyphae under the microscope).",
+    "treatmentOptions": [
+      { "name": "Targeted Oral Antifungals", "details": "Prescribed courses of systemic antifungals adjusted based on liver function parameters." },
+      { "name": "Topical Antifungal Formulations", "details": "Clotrimazole, Luliconazole, or Sertaconazole creams applied in a specific manner." }
+    ],
+    "recovery": "No downtime. Requires strict adherence to hygiene protocols and treatment duration.",
+    "benefits": ["Eliminates persistent itching and skin flaking", "Prevents transmission to family members", "Clears dark rings and patches completely"],
+    "expectedResults": "Itch relief occurs in 3-5 days. Skin patches dry up and clear within 2-4 weeks. Total clearance requires completing the full course.",
+    "faqs": [
+      { "question": "Why does my fungal rash keep coming back?", "answer": "Recurrence is common if you stop medicine early, wear tight synthetic clothes, or have used OTC steroid creams which feed the fungus." }
+    ]
+  },
+  {
+    "slug": "hair-loss",
+    "title": "Hair Loss & Thinning Treatments",
+    "category": "Hair Care",
+    "shortDescription": "Comprehensive diagnostics and medical regimens to halt hair fall and restore density.",
+    "description": "Hair loss requires a detailed clinical diagnosis, whether it is male/female pattern baldness or Telogen Effluvium. We combine medical therapies (Minoxidil, Finasteride, peptide serums) with nutritional correction to stop shedding and reactivate dormant follicles.",
+    "symptoms": ["Gradual thinning on top of the head", "Widening hair part or receding hairline", "Excessive hair shedding on the pillow, comb, or shower drain", "Patchy bald spots (Alopecia Areata)"],
+    "causes": ["Genetics and hormones (DHT sensitivity)", "Nutritional deficiencies (Iron, Vitamin D, B12)", "Physical/emotional stress, thyroid disorders, or post-pregnancy shifts"],
+    "diagnosis": "Trichoscopy (microscopic scalp analysis), blood panels (ferritin, thyroid, hormones), and pull tests.",
+    "treatmentOptions": [
+      { "name": "DHT Blockers & Minoxidil", "details": "Tailored topical and oral medical therapy to prolong the hair growth phase (Anagen)." },
+      { "name": "Nutraceutical Therapy", "details": "Clinical vitamins, amino acids, and minerals formulation based on blood report deficiencies." }
+    ],
+    "recovery": "Zero downtime. A consistent routine is required to maintain new hair growth.",
+    "benefits": ["Halts excessive hair shedding within weeks", "Re-energizes thinning hair shafts (reverses miniaturization)", "Stimulates new hair follicle growth"],
+    "expectedResults": "Hair fall stabilizes in 4-6 weeks. Visible density improvements and baby hair growth are typically seen at 3-6 months.",
+    "faqs": [
+      { "question": "Will I have to take hair medicines forever?", "answer": "For genetic hair loss (Androgenetic Alopecia), long-term maintenance is required. For temporary hair fall (Telogen Effluvium), treatments can be tapered off once corrected." }
+    ]
+  },
+  {
+    "slug": "prp-therapy",
+    "title": "PRP & GFC Hair Therapy",
+    "category": "Hair Care",
+    "shortDescription": "Platelet-Rich Plasma and Growth Factor Concentrate to naturally boost hair density.",
+    "description": "PRP and GFC (Growth Factor Concentrate) are revolutionary regenerative therapies. By isolating and concentrating growth factors from your own blood, we inject them into the scalp to accelerate cell division, increase vascularity, and thicken hair follicles.",
+    "symptoms": ["Diffuse hair thinning", "Decreasing hair volume and limp hair", "Early-stage pattern baldness"],
+    "causes": ["Miniaturization of hair follicles due to DHT", "Poor microcirculation in the scalp", "Lack of growth signals in the follicular niche"],
+    "diagnosis": "Scalp trichoscopy highlighting areas of miniaturized hair shafts suitable for stimulation.",
+    "treatmentOptions": [
+      { "name": "Autologous Platelet-Rich Plasma (PRP)", "details": "Centrifuged blood plasma rich in platelets injected via micro-needles into the scalp." },
+      { "name": "Growth Factor Concentrate (GFC)", "details": "A premium, acellular therapy derived from platelets, yielding higher, standardized growth factors with less pain." }
+    ],
+    "recovery": "Mild soreness or tightness of the scalp for 12-24 hours. Wash hair the next day.",
+    "benefits": ["Highly natural, using your own blood growth factors", "Thickens thin hair strands and improves texture", "Increases active follicular density"],
+    "expectedResults": "Reduced hair shedding after the 2nd session. Visible increase in volume and hair thickness after 3-4 sessions, spaced monthly.",
+    "faqs": [
+      { "question": "Is PRP hair therapy painful?", "answer": "We use a cold spray or ring block along with micro-needles, making the GFC/PRP injections very comfortable." },
+      { "question": "How many sessions are needed?", "answer": "An initial package of 4 to 6 sessions spaced 4 weeks apart is standard, followed by maintenance sessions every 4-6 months." }
+    ]
+  },
+  {
+    "slug": "laser-hair-removal",
+    "title": "Laser Hair Removal (LHR)",
+    "category": "Laser & Aesthetics",
+    "shortDescription": "Pain-free, premium laser sessions for permanent reduction of unwanted hair.",
+    "description": "Say goodbye to waxing and shaving. Our clinic uses US-FDA approved triple-wavelength diode/Alexandrite laser systems with advanced contact cooling, making LHR completely safe, pain-free, and effective for all Indian skin types.",
+    "symptoms": ["Unwanted facial or body hair", "Ingrown hair, razor bumps, and strawberry legs", "Thick, dark hair growth due to hormonal causes"],
+    "causes": ["Genetic hair distribution", "Hormonal shifts (hirsutism from PCOS)"],
+    "diagnosis": "Assessment of hair thickness, skin phototype, and checking for hormonal symptoms before choosing laser parameters.",
+    "treatmentOptions": [
+      { "name": "US-FDA Triple Wavelength Laser", "details": "Combines 755nm, 810nm, and 1064nm wavelengths to target superficial and deep follicles safely." }
+    ],
+    "recovery": "Zero downtime. Mild transient redness may occur for a few hours. Sunscreen and soothing gel application are advised.",
+    "benefits": ["Permanent reduction of hair density by 80-90%", "Smooth, soft skin without razor bumps or ingrowns", "Saves time and money compared to lifetime waxing"],
+    "expectedResults": "Slower and finer hair growth after the first session. Average of 6-8 sessions are needed for complete body areas.",
+    "faqs": [
+      { "question": "Does laser hair removal cause cancer?", "answer": "No. The laser uses non-ionizing light energy that only targets hair melanin and does not penetrate beyond the skin dermis." },
+      { "question": "Can it be done on the face?", "answer": "Yes, it is highly safe for facial hair, and we customize settings to avoid stimulating fine peach fuzz." }
+    ]
+  },
+  {
+    "slug": "chemical-peel",
+    "title": "Medical Chemical Peels",
+    "category": "Aesthetics",
+    "shortDescription": "Exfoliating peels to treat acne, dullness, fine lines, and superficial spots.",
+    "description": "Chemical peels utilize clinical-grade organic acids (Salicylic, Glycolic, Lactic, Mandelic, or TCA) to controlledly exfoliate the top skin layers. This speeds up cell turnover, removes dead cells, unclogs pores, and fades blemishes.",
+    "symptoms": ["Dull complexion, rough skin texture", "Superficial acne scars, active blackheads", "Mild sun damage and fine lines"],
+    "causes": ["Accumulation of dead skin cells", "Post-acne marking and slow cellular renewal", "Environmental pollutant build-up"],
+    "diagnosis": "Analysis of skin sensitivity, sebum levels, and specific concerns to select the appropriate chemical peel agent.",
+    "treatmentOptions": [
+      { "name": "Salicylic Peels", "details": "Oil-soluble peel that penetrates deep into pores to dissolve oil, ideal for acne." },
+      { "name": "Glycolic & Lactic Peels", "details": "Alpha-hydroxy acids that hydrate and brighten, perfect for pigmentation and aging skin." },
+      { "name": "Yellow Peel / Retinol Peel", "details": "Advanced peeling that works at deeper layers to treat melasma and wrinkles." }
+    ],
+    "recovery": "Mild redness and light peeling/flaking for 2-5 days. Sunscreen and moisturizer are essential.",
+    "benefits": ["Instantly smoother skin texture", "Brighter, glowing complexion", "Fades blemishes, dark marks, and acne spots"],
+    "expectedResults": "Immediate glow within 48 hours. Clearer, more even skin texture develops over a series of 3-4 peeling treatments.",
+    "faqs": [
+      { "question": "Will my skin peel off in sheets?", "answer": "No. Modern medical peels are formulated to act microscopically. You will experience light flaking, not dramatic shedding." }
+    ]
+  },
+  {
+    "slug": "hydra-facial",
+    "title": "Bespoke Hydra Facial",
+    "category": "Aesthetics",
+    "shortDescription": "Premium multi-step facial for deep cleansing, exfoliation, extraction, and hydration.",
+    "description": "Our Hydra Facial is a signature medical-grade treatment using patented vortex-fusion technology. We deep cleanse, exfoliate, extract impurities painlessly with suction, and infuse targeted clinical serums containing hyaluronic acid, peptides, and antioxidants.",
+    "symptoms": ["Dry, dehydrated, or flaky skin", "Congested pores and blackheads", "Lack of skin radiance and bounce"],
+    "causes": ["Pollution, makeup buildup, and dead skin cells", "Dehydration from lack of moisture", "Slow microcirculation in the skin"],
+    "diagnosis": "Skin assessment of hydration index and pore clogging.",
+    "treatmentOptions": [
+      { "name": "Signature 5-Step Hydra Facial", "details": "Includes Lymphatic drainage, Vortex-Exfoliation, Acid Peel, Vortex-Extraction, and Antioxidant Infusion." },
+      { "name": "Platinum Hydra Facial", "details": "Enhanced with customized booster vials and LED phototherapy for anti-aging or acne." }
+    ],
+    "recovery": "Zero downtime. Immediate post-treatment glow. Perfect 'red-carpet' prep.",
+    "benefits": ["Deeply cleanses pores and removes blackheads", "Intense, deep-skin hydration and plumpness", "Improves skin tone, texture, and brightness"],
+    "expectedResults": "Immediate, radiant skin hydration and smoothness that lasts for 2-3 weeks.",
+    "faqs": [
+      { "question": "How often should I get a Hydra Facial?", "answer": "Once a month is recommended to maintain optimal skin health, hydration, and pore clarity." }
+    ]
+  },
+  {
+    "slug": "botox",
+    "title": "Botox & Wrinkle Relaxers",
+    "category": "Aesthetics",
+    "shortDescription": "FDA-approved micro-injections to smooth dynamic lines, crow's feet, and forehead wrinkles.",
+    "description": "Smooth out frown lines, forehead creases, and crow's feet. We administer micro-doses of purified Botulinum Toxin Type A to temporarily relax the muscles responsible for repetitive facial expressions, creating a refreshed, natural look.",
+    "symptoms": ["Dynamic wrinkles (visible when smiling or frowning)", "Horizontal forehead lines and brow furrows", "Crow's feet around the eyes"],
+    "causes": ["Repetitive facial expressions", "Loss of collagen and skin elasticity with age", "Sun damage accelerating wrinkle formation"],
+    "diagnosis": "Evaluation of facial muscles during dynamic movement to determine exact injection sites and units needed.",
+    "treatmentOptions": [
+      { "name": "Dynamic Wrinkle Correction", "details": "Injecting forehead, glabella, and crow's feet for a smoother, line-free look." },
+      { "name": "Masseter Botox (Jaw Slimming)", "details": "Relaxes masseter muscles to slim the lower face and relieve teeth grinding (Bruxism)." }
+    ],
+    "recovery": "No downtime. Avoid lying down, rubbing the face, or intense exercise for 4 hours post-procedure.",
+    "benefits": ["Visibly erases forehead lines and crow's feet", "Quick 15-minute 'lunchtime' procedure", "Prevents permanent static lines from etching in"],
+    "expectedResults": "Softening of lines starts in 3-5 days, with full results visible at 10-14 days. Results last 4-6 months.",
+    "faqs": [
+      { "question": "Will my face look frozen?", "answer": "No. Our philosophy is 'less is more'. We inject precisely to preserve natural expressions while softening wrinkles." }
+    ]
+  },
+  {
+    "slug": "dermal-fillers",
+    "title": "Dermal Fillers & Sculpting",
+    "category": "Aesthetics",
+    "shortDescription": "Hyaluronic acid fillers to restore lost volume, lift cheeks, and contour lips.",
+    "description": "Dermal fillers are premium injectable gels made of Hyaluronic Acid, a substance naturally present in the skin. We use them to restore hollow cheeks, plump thin lips, define jawlines, and soften deep folds like the nasolabial lines.",
+    "symptoms": ["Sunken cheeks or hollow under-eyes", "Thin lips or asymmetric lip shape", "Deep nasolabial folds (smile lines) or saggy jawline"],
+    "causes": ["Natural fat pad depletion and bone resorption with aging", "Loss of skin structure and moisture (hyaluronic acid)"],
+    "diagnosis": "3D facial assessment evaluating shadow patterns, tissue volume loss, and profile symmetry.",
+    "treatmentOptions": [
+      { "name": "Lip Enhancement & Contouring", "details": "Bespoke lip shaping to add volume, structure, and hydration." },
+      { "name": "Mid-Face Lift & Cheek Contouring", "details": "Injecting deep filler over the cheekbones to lift the lower face and fill hollows." }
+    ],
+    "recovery": "Minimal downtime. Mild swelling or tiny bruises at injection points may last 2-3 days.",
+    "benefits": ["Immediate volume restoration and lifting effect", "Highly natural looking and fully reversible results", "Deeply hydrates skin from the inside out"],
+    "expectedResults": "Results are instantly visible. The filler settles and looks completely natural in 7-10 days, lasting 9-18 months.",
+    "faqs": [
+      { "question": "What happens if I don't like my fillers?", "answer": "Hyaluronic acid fillers can be completely dissolved within hours using a safe enzyme injection called Hyaluronidase." }
+    ]
+  },
+  {
+    "slug": "anti-aging",
+    "title": "Anti-Aging & Skin Rejuvenation",
+    "category": "Aesthetics",
+    "shortDescription": "Comprehensive age-reversal plans utilizing lasers, peels, and injectables.",
+    "description": "Aging affects the skin, fat pads, and muscles. We create personalized anti-aging packages that combine collagen-stimulating lasers, medical microneedling, skin boosters (like Profhilo), and custom skincare to restore youthfulness, elasticity, and glow.",
+    "symptoms": ["Fine lines, wrinkles, and skin laxity", "Age spots, sun damage, and dullness", "Hollowness and loss of facial contours"],
+    "causes": ["Declining collagen and elastin production", "UV exposure, pollution, lifestyle, and genetics", "Gravity pulling down sagging skin tissue"],
+    "diagnosis": "Comprehensive skin elasticity and volume assessment to plan combination therapies.",
+    "treatmentOptions": [
+      { "name": "Skin Booster (e.g., Profhilo / Juvederm Volite)", "details": "Pure hyaluronic acid injected to intensely hydrate skin and stimulate collagen." },
+      { "name": "Non-ablative Resurfacing", "details": "Laser treatments that stimulate deep dermal layers without peeling the skin." }
+    ],
+    "recovery": "Depending on chosen procedure: zero downtime for skin boosters, 1-2 days of redness for resurfacing.",
+    "benefits": ["Reverses fine lines and tightens sagging skin", "Restores youthful radiance and plumps hollows", "Improves skin health at a cellular level"],
+    "expectedResults": "Gradual skin tightening and glow starting in 2 weeks, peaking at 2 months as new collagen fibers mature.",
+    "faqs": [
+      { "question": "At what age should I start anti-aging treatments?", "answer": "Preventative treatments like skin boosters and collagen-stimulating lasers can be started in the late 20s or early 30s." }
+    ]
+  },
+  {
+    "slug": "skin-brightening",
+    "title": "Skin Brightening & Glow",
+    "category": "Aesthetics",
+    "shortDescription": "Premium glutathione infusion, carbon peels, and brightening medi-facials.",
+    "description": "Achieve a luminous, red-carpet glow. Our clinic provides customized skin-brightening treatments including Carbon Laser Peels (Hollywood Peel), specialized medical facials, and clinical antioxidant infusions to flush out toxins and reduce melanin synthesis.",
+    "symptoms": ["Dull, tired-looking skin", "Uneven skin tone and tanning", "Post-inflammatory dark spots"],
+    "causes": ["Oxidative stress from pollution and UV rays", "Poor circulation and buildup of dead cells", "Hyperpigmentation from inflammation"],
+    "diagnosis": "Visual evaluation of skin dullness and hydration levels.",
+    "treatmentOptions": [
+      { "name": "Carbon Laser Peel", "details": "A layer of carbon cream is applied to the skin, which absorbs oil and debris, then vaporized by laser to exfoliate and brighten." },
+      { "name": "Antioxidant Medi-Facials", "details": "Infusions of stable Vitamin C, Glutathione, and Niacinamide using ultrasound technology." }
+    ],
+    "recovery": "Zero downtime. Perfect for social events.",
+    "benefits": ["Instant radiance, brightness, and glow", "Reduces pore size and clears excess sebum", "Deeply exfoliates and refines skin texture"],
+    "expectedResults": "An immediate glowing complexion post-procedure, with cumulative improvements in skin clarity over 3-4 sessions.",
+    "faqs": [
+      { "question": "Is Carbon Laser Peel safe for sensitive skin?", "answer": "Yes, it is a very gentle laser procedure that doesn't damage the skin barrier, making it safe for almost all skin types." }
+    ]
+  },
+  {
+    "slug": "skin-tightening",
+    "title": "Skin Tightening & Lifting",
+    "category": "Laser & Aesthetics",
+    "shortDescription": "Non-surgical face lift using HIFU and High-Frequency Radiofrequency.",
+    "description": "Lift sagging cheeks, redefine the jawline, and reduce double chins without surgery. We utilize US-FDA approved High-Intensity Focused Ultrasound (HIFU) and advanced monopolar radiofrequency to heat the deep SMAS layer of skin, contracting collagen fibers and triggering massive new collagen production.",
+    "symptoms": ["Sagging jowls, loose jawline", "Double chin and sagging neck skin", "Fine lines, wrinkles, and droopy eyelids"],
+    "causes": ["Depletion of structural collagen and elastin fibers", "Weakening of the facial muscle supporting layer (SMAS)"],
+    "diagnosis": "Evaluation of skin laxity and underlying fat layers to customize ultrasound/RF depth.",
+    "treatmentOptions": [
+      { "name": "HIFU (High-Intensity Focused Ultrasound)", "details": "Delivers focused ultrasound energy to the SMAS layer (4.5mm deep) to lift and contract sagging tissue." },
+      { "name": "Monopolar RF Tightening", "details": "Volumetric heating of the dermis to tighten loose skin and smooth wrinkles." }
+    ],
+    "recovery": "No downtime. Some patients experience temporary mild soreness along the jawline for a few days.",
+    "benefits": ["Non-surgical lift with no needles or cutting", "Sharpens the jawline and reduces jowls", "Continuous improvement for up to 6 months"],
+    "expectedResults": "About 20% improvement is visible immediately due to collagen contraction. The main lifting results develop over 2-3 months.",
+    "faqs": [
+      { "question": "How long do HIFU results last?", "answer": "Results typically last 12 to 18 months, depending on your skin's natural aging process. An annual maintenance session is recommended." }
+    ]
+  },
+  {
+    "slug": "mole-removal",
+    "title": "Precision Mole Removal",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Safe, scarless removal of moles using advanced Radiofrequency ablation.",
+    "description": "We offer safe, scarless mole removal using high-frequency Radiofrequency (RF) ablation or surgical excision. Each mole is evaluated dermatoscopically before removal to rule out any atypical features, ensuring complete safety.",
+    "symptoms": ["Protruding, unsightly, or rubbing moles", "Moles on the face, neck, or body that cause aesthetic concerns"],
+    "causes": ["Clusters of pigment-producing cells (melanocytes)", "Genetic factors and sun exposure"],
+    "diagnosis": "Dermoscopy examination to analyze borders, symmetry, and color, ensuring the mole is benign before removal.",
+    "treatmentOptions": [
+      { "name": "Radiofrequency (RF) Ablation", "details": "Precision vaporization of the mole tissue layer-by-layer under local anesthesia, minimizing thermal damage." },
+      { "name": "Surgical Shave Excision", "details": "Used for larger, flat, or deep moles, with fine, aesthetic suturing if required." }
+    ],
+    "recovery": "Minor scab forms in 2-3 days and falls off in 7-10 days. Post-procedure antibiotic gel must be applied.",
+    "benefits": ["Quick, sterile, in-office procedure", "Minimal risk of scarring or pigmentation changes", "Ensures mole tissue is checked for safety if needed"],
+    "expectedResults": "The mole is removed instantly. The skin heals with a pink spot that fades to blend with surrounding skin over 4-8 weeks.",
+    "faqs": [
+      { "question": "Will the mole leave a scar after removal?", "answer": "RF ablation is extremely precise and leaves minimal to no visible scar on the face. Proper sun protection during healing ensures optimal cosmetic results." }
+    ]
+  },
+  {
+    "slug": "wart-removal",
+    "title": "Wart & Tag Removal",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Instant clearance of warts, skin tags, and milia with radiofrequency.",
+    "description": "Warts are viral infections caused by HPV, while skin tags are harmless friction-induced growths. We remove them instantly and bloodlessly using radiofrequency cautery or cryotherapy, preventing the virus from spreading to other body parts.",
+    "symptoms": ["Rough, raised growths on hands, feet, or face (Warts)", "Fleshy, hanging skin growths on neck or underarms (Skin Tags)", "Small, hard white cysts on the face (Milia)"],
+    "causes": ["Human Papillomavirus (HPV) infection for warts", "Friction, weight changes, or insulin resistance for skin tags", "Trapped keratin under the skin surface for milia"],
+    "diagnosis": "Visual and dermoscopic evaluation of the lesions.",
+    "treatmentOptions": [
+      { "name": "Radiofrequency Cautery", "details": "Vaporizes the stalk or base of the skin tag/wart instantly, causing it to fall off immediately." },
+      { "name": "Cryotherapy", "details": "Freezing the wart tissue using liquid nitrogen, causing it to blister and fall off in a few days." }
+    ],
+    "recovery": "Small scabs form at the site, healing completely within 5-7 days. Avoid scratching the healing spots.",
+    "benefits": ["Instant removal in a single session", "Bloodless and sterile procedure", "Prevents warts from multiplying or spreading"],
+    "expectedResults": "Immediate elimination of the skin tags/warts. The skin underneath heals smoothly within a week.",
+    "faqs": [
+      { "question": "Are skin tags and warts the same?", "answer": "No. Warts are caused by a contagious virus (HPV). Skin tags are non-contagious, harmless growths caused by skin friction." }
+    ]
+  },
+  {
+    "slug": "nail-disorders",
+    "title": "Nail Disorders & Treatments",
+    "category": "Clinical Dermatology",
+    "shortDescription": "Expert treatment for fungal nail infections, ingrown nails, and ridges.",
+    "description": "Nail health can reflect systemic issues. We treat fungal nail infections (onychomycosis), ingrown toenails, brittle nails, and nail discoloration using customized medical therapies, laser nail treatment, and surgical nail avulsion for painful ingrowns.",
+    "symptoms": ["Thickened, yellow, or crumbly nails (Fungal)", "Pain, swelling, and pus on the side of the toenail (Ingrown)", "Brittle, splitting nails or deep ridges"],
+    "causes": ["Fungal spores invading the nail bed", "Improper nail trimming, tight shoes (Ingrown nails)", "Psoriasis, eczema, or nutritional deficiencies"],
+    "diagnosis": "Clinical evaluation, clipping check, and KOH scraping to confirm fungal elements.",
+    "treatmentOptions": [
+      { "name": "Ingrown Toenail Surgery (Matricectomy)", "details": "Removal of the ingrown border under local anesthesia, chemical ablation of the root to prevent recurrence." },
+      { "name": "Oral & Topical Nail Antifungals", "details": "Long-term antifungal pulse therapies designed to penetrate the hard nail plate." }
+    ],
+    "recovery": "Laser/Medical: No downtime. Ingrown surgery: 2-3 days of rest and keeping the foot elevated, dress for a week.",
+    "benefits": ["Relieves agonizing pain of ingrown nails permanently", "Clears yellow, crumbly fungal nail plates", "Restores normal, healthy nail growth"],
+    "expectedResults": "Nails grow slowly. Improvement in fungal nails takes 3-6 months. Ingrown toenail relief is immediate after surgery.",
+    "faqs": [
+      { "question": "Will my nail grow back after ingrown surgery?", "answer": "Only the side border causing the pain is removed, and the root of that specific edge is ablated. The rest of your nail remains intact and grows normally." }
+    ]
+  }
+]

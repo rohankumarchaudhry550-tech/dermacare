@@ -1,0 +1,125 @@
+{
+  "averageRating": 4.9,
+  "totalReviews": 2354,
+  "ratingDistribution": {
+    "5": 2185,
+    "4": 142,
+    "3": 21,
+    "2": 4,
+    "1": 2
+  },
+  "reviews": [
+    {
+      "id": "rev-1",
+      "name": "Priyanka Mehta",
+      "rating": 5,
+      "date": "2 weeks ago",
+      "treatment": "acne-scar-removal",
+      "text": "I had deep acne scars from my teenage years that made me very self-conscious. After 4 sessions of Fractional CO2 laser and subcision with Dr. Aryan, my scars are about 80% gone! The clinic is stunning and the treatment was very comfortable. Highly recommend!",
+      "verified": true,
+      "avatar": "P"
+    },
+    {
+      "id": "rev-2",
+      "name": "Rohan Deshmukh",
+      "rating": 5,
+      "date": "1 month ago",
+      "treatment": "prp-therapy",
+      "text": "Dr. Aryan is a miracle worker. I was experiencing severe hair thinning at the crown. He diagnosed me and started GFC hair therapy sessions. After just 3 sessions, my hair shedding has completely stopped and I can see visible baby hair growth. The GFC treatment is virtually painless compared to traditional PRP.",
+      "verified": true,
+      "avatar": "R"
+    },
+    {
+      "id": "rev-3",
+      "name": "Sneha Sen",
+      "rating": 5,
+      "date": "3 weeks ago",
+      "treatment": "melasma",
+      "text": "I have been struggling with postpartum melasma patches for 2 years. Dr. Aryan recommended a customized Cosmelan peel program followed by laser toning. My pigmentation has cleared up almost entirely. His approach is very gentle and clinical. He explained everything beautifully.",
+      "verified": true,
+      "avatar": "S"
+    },
+    {
+      "id": "rev-4",
+      "name": "Vikram Malhotra",
+      "rating": 5,
+      "date": "2 months ago",
+      "treatment": "laser-hair-removal",
+      "text": "I was hesitant about laser hair removal as a man, but the team at DermaCare+ made me feel very comfortable. The triple-wavelength laser machine they use is fantastic. There was no pain, just a cooling sensation, and after 5 sessions, my back hair is almost gone. Extremely clean clinic.",
+      "verified": true,
+      "avatar": "V"
+    },
+    {
+      "id": "rev-5",
+      "name": "Meera Joshi",
+      "rating": 4,
+      "date": "1 month ago",
+      "treatment": "hydra-facial",
+      "text": "The signature Hydra Facial at DermaCare+ is the best skin treat. It clears out all blackheads and leaves my skin deeply hydrated and glowing for weeks. The pricing is premium, but the luxury service and clinical environment are worth every rupee.",
+      "verified": true,
+      "avatar": "M"
+    },
+    {
+      "id": "rev-6",
+      "name": "Aditya Roy",
+      "rating": 5,
+      "date": "3 months ago",
+      "treatment": "dermal-fillers",
+      "text": "Got jawline and chin dermal fillers done by Dr. Aryan. I wanted a very natural look and he delivered exactly that. He has an artistic eye. No one can tell I had fillers done, my friends just comment that I look refreshed and fit.",
+      "verified": true,
+      "avatar": "A"
+    }
+  ],
+  "videoTestimonials": [
+    {
+      "id": "vid-1",
+      "patientName": "Komal Kapoor",
+      "treatment": "Acne Scar Revision",
+      "thumbnailUrl": "/gallery/video-thumb-1.jpg",
+      "videoUrl": "https://www.youtube.com/embed/gU9G4D0u9P8"
+    },
+    {
+      "id": "vid-2",
+      "patientName": "Kabir Sharma",
+      "treatment": "GFC Hair Restoration",
+      "thumbnailUrl": "/gallery/video-thumb-2.jpg",
+      "videoUrl": "https://www.youtube.com/embed/9Bf31_A9V2Q"
+    },
+    {
+      "id": "vid-3",
+      "patientName": "Shalini Nair",
+      "treatment": "Anti-Aging Liquid Lift",
+      "thumbnailUrl": "/gallery/video-thumb-3.jpg",
+      "videoUrl": "https://www.youtube.com/embed/WJ_64Wj4iEE"
+    }
+  ],
+  "successStories": [
+    {
+      "id": "story-1",
+      "title": "Severe Cystic Acne Clearance",
+      "age": "24",
+      "condition": "Severe Hormonal Cystic Acne",
+      "duration": "4 Months",
+      "protocol": "Low-dose oral Isotretinoin, Salicylic Acid Peels, and LED Blue Light therapies.",
+      "result": "95% clearance of active acne lesions with skin barrier restoration and minimal scarring."
+    },
+    {
+      "id": "story-2",
+      "title": "Androgenetic Alopecia Restoration",
+      "age": "32",
+      "condition": "Male Pattern Baldness (Grade III)",
+      "duration": "6 Months",
+      "protocol": "6 sessions of Growth Factor Concentrate (GFC), daily topical Minoxidil & Finasteride.",
+      "result": "Significant hair density improvement at the vertex and crown, converting fine vellus hair to thick terminal shafts."
+    },
+    {
+      "id": "story-3",
+      "title": "Stubborn Epidermal Melasma Reduction",
+      "age": "41",
+      "condition": "Bilateral Malar Melasma",
+      "duration": "3 Months",
+      "protocol": "Cosmelan Depigmentation Treatment followed by Q-Switched Nd:YAG Laser Toning.",
+      "result": "Over 90% reduction in pigmentation density, resulting in an even skin tone and regulated melanocyte cells."
+    }
+  ]
+}

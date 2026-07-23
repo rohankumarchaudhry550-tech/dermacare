@@ -1,0 +1,84 @@
+{
+  "name": "Dr. Aryan Sharma",
+  "title": "MD, DNB (Dermatology, Venereology & Leprosy)",
+  "subtitle": "Senior Consultant Dermatologist, Hair Transplant Specialist & Aesthetic Surgeon",
+  "about": "Dr. Aryan Sharma is a nationally recognized, award-winning dermatologist with over 15 years of experience in clinical dermatology, advanced laser diagnostics, and aesthetic medicine. He completed his MD from the prestigious All India Institute of Medical Sciences (AIIMS), New Delhi, followed by advanced fellowships in laser surgery and anti-aging treatments in London and Seoul.",
+  "bio": "Dr. Aryan Sharma is committed to providing world-class, personalized skin and hair care that blends rigorous medical science with modern aesthetic artistry. Over his distinguished career, he has performed over 10,000 laser procedures and successfully treated more than 30,000 patients. He is a pioneer in customized medical-grade facials, scar revision, and regenerative therapies for hair loss in India.",
+  "degrees": [
+    {
+      "degree": "MD - Dermatology, Venereology & Leprosy",
+      "institution": "All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "year": "2010"
+    },
+    {
+      "degree": "MBBS",
+      "institution": "Maulana Azad Medical College (MAMC), New Delhi",
+      "year": "2006"
+    },
+    {
+      "degree": "DNB (Diplomate of National Board)",
+      "institution": "National Board of Examinations, India",
+      "year": "2011"
+    }
+  ],
+  "certifications": [
+    "Board Certified Dermatologist (IADVL)",
+    "Fellowship in Aesthetic Medicine & Laser Surgery (London, UK)",
+    "Advanced training in Hair Transplantation & PRP (Seoul, South Korea)",
+    "Certified Aesthetic Injector (Allergan Medical Institute)"
+  ],
+  "memberships": [
+    "Indian Association of Dermatologists, Venereologists and Leprologists (IADVL)",
+    "Association of Cutaneous Surgeons of India (ACSI)",
+    "Cosmetic Dermatology Society of India (CDSI)",
+    "International Society of Dermatology (ISD)"
+  ],
+  "awards": [
+    {
+      "title": "Best Aesthetic Dermatologist of the Year",
+      "organization": "National Healthcare Awards",
+      "year": "2023"
+    },
+    {
+      "title": "Dr. B.C. Roy Memorial Award for Clinical Excellence",
+      "organization": "Indian Medical Association",
+      "year": "2021"
+    },
+    {
+      "title": "Young Dermatologist Investigator Award",
+      "organization": "IADVL National Conference",
+      "year": "2016"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2020 - Present",
+      "role": "Founder & Medical Director",
+      "organization": "DermaCare+ Luxury Clinic, Mumbai",
+      "description": "Established Mumbai's premier luxury dermatology center offering advanced FDA-approved lasers, anti-aging solutions, and bespoke wellness treatments."
+    },
+    {
+      "year": "2015 - 2020",
+      "role": "Senior Consultant Dermatologist",
+      "organization": "Fortis Memorial Research Institute, Gurgaon",
+      "description": "Headed the cosmetic dermatology department, focusing on laser procedures, acne scar revision, and non-surgical facial contouring."
+    },
+    {
+      "year": "2011 - 2015",
+      "role": "Consultant Dermatologist & Laser Specialist",
+      "organization": "Kaya Skin Clinic, Mumbai & Delhi",
+      "description": "Managed complex medical skin cases, trained junior dermatologists, and designed custom clinical peeling protocols."
+    },
+    {
+      "year": "2007 - 2010",
+      "role": "Resident Doctor (MD)",
+      "organization": "AIIMS, New Delhi",
+      "description": "Completed extensive clinical residency in inpatient and outpatient dermatology, pediatric dermatology, and dermatosurgery."
+    }
+  ],
+  "philosophy": {
+    "mission": "To deliver clinical excellence in dermatology and aesthetics with the highest standards of safety, ethics, and luxury customer care.",
+    "vision": "To empower individuals to feel confident in their natural skin through evidence-based medicine and personalized, artistic enhancements.",
+    "philosophy": "Every skin is unique. I believe in a holistic treatment approach that combines state-of-the-art medical lasers with customized home-care regimes and lifestyle counseling, ensuring healthy skin that radiates confidence from within."
+  }
+}
