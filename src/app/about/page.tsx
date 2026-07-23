@@ -8,7 +8,7 @@ import Timeline from "@/components/ui/Timeline";
 
 export default function AboutDoctor() {
   return (
-    <div className="relative min-h-screen py-16 px-6">
+    <div className="relative min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       {/* Background Gradients */}
       <div className="absolute top-[15%] right-[5%] w-[400px] h-[400px] rounded-full bg-accent/25 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[20%] left-[5%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl pointer-events-none animate-pulse-soft" />
@@ -18,18 +18,20 @@ export default function AboutDoctor() {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 flex justify-center">
             {/* Visual representation of premium profile */}
-            <div className="bg-white rounded-[2.5rem] p-8 border border-accent/40 shadow-luxury w-full max-w-sm relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-br from-primary/10 to-secondary/15 rounded-bl-[2.5rem]" />
-              <div className="h-72 w-full rounded-2xl overflow-hidden mb-6 relative border border-accent/20">
+            <div className="bg-white rounded-3xl p-4 border border-accent/40 shadow-luxury w-full max-w-sm relative overflow-hidden group">
+              <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-br from-primary/10 to-secondary/15 rounded-bl-3xl pointer-events-none z-10" />
+              <div className="aspect-[4/5] w-full rounded-2xl overflow-hidden relative border border-accent/20">
                 <img
                   src="/hero-consultation.png"
                   alt="Dr. Aryan Sharma MD"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                {/* Luxury bottom floating label */}
+                <div className="absolute bottom-4 left-4 right-4 glass px-4 py-3 rounded-xl border border-white/20 z-10 text-left">
+                  <span className="text-[10px] font-bold text-secondary uppercase tracking-widest block">Chief Consultant</span>
+                  <h3 className="font-poppins font-extrabold text-sm text-slate-800">{doctorData.name}</h3>
+                </div>
               </div>
-              <h3 className="font-poppins font-bold text-xl text-slate-900">{doctorData.name}</h3>
-              <p className="text-xs text-secondary font-semibold mt-1">{doctorData.subtitle}</p>
-              <p className="text-xs text-slate-500 mt-4 leading-relaxed">{doctorData.about}</p>
             </div>
           </div>
 

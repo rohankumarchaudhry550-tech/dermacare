@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BrandLogo from "./BrandLogo";
 
 export default function PageTransition() {
   const [loading, setLoading] = useState(true);
@@ -33,10 +34,10 @@ export default function PageTransition() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="h-16 w-16 bg-gradient-to-tr from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto shadow-lg relative"
+              className="h-16 w-16 mx-auto relative"
             >
-              <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-40 animate-pulse" />
-              <span className="text-white font-serif font-extrabold text-2xl relative z-10">+</span>
+              <div className="absolute inset-0 bg-primary/30 rounded-full blur-md animate-pulse" />
+              <BrandLogo className="h-full w-full text-accent relative z-10" />
             </motion.div>
             
             <div className="space-y-2">

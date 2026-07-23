@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Sparkles, Phone, Mail, MapPin, Clock, Send, ShieldAlert, Check } from "lucide-react";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -47,14 +48,14 @@ export default function Footer() {
         {/* Column 1: Info & Newsletter */}
         <div className="space-y-6">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shadow-md">
-              <Sparkles className="h-5 w-5" />
+            <div className="h-10 w-10 flex items-center justify-center">
+              <BrandLogo className="h-full w-full text-accent" />
             </div>
             <div>
               <span className="font-poppins font-extrabold text-xl tracking-tight text-white flex items-center gap-0.5">
-                DermaCare<span className="text-secondary font-light">+</span>
+                DermaCare<span className="text-accent font-light">+</span>
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-accent font-bold block -mt-1">
+              <span className="text-[9px] uppercase tracking-widest text-accent font-bold block -mt-1 opacity-80">
                 Aesthetic & Skin Clinic
               </span>
             </div>

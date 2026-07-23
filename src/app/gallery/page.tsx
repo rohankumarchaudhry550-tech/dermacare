@@ -131,11 +131,11 @@ export default function GalleryPage() {
             </div>
             <div className="lg:col-span-7">
               <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative bg-slate-950">
-                <iframe
-                  src="https://www.youtube.com/embed/9Bf31_A9V2Q"
-                  title="Dr. Aryan Sharma Clinic Walkthrough"
-                  className="w-full h-full border-none"
-                  allowFullScreen
+                <video
+                  src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c02cba73e2185d9de28f99e4f5d50bde&profile_id=164&oauth2_token_id=57447761"
+                  controls
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -231,14 +231,13 @@ export default function GalleryPage() {
                 key={vid.id}
                 className="bg-white rounded-3xl border border-accent/20 overflow-hidden shadow-sm hover:shadow-luxury hover:border-secondary/35 transition-all duration-300"
               >
-                {/* Embed player */}
+                {/* Video player */}
                 <div className="aspect-video bg-slate-950 relative flex items-center justify-center overflow-hidden">
-                  {/* YouTube Iframe mockup or clean play trigger */}
-                  <iframe
+                  <video
                     src={vid.videoUrl}
-                    title={vid.patientName}
-                    className="w-full h-full border-none"
-                    allowFullScreen
+                    controls
+                    playsInline
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-5 space-y-1">

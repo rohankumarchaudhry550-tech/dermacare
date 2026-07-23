@@ -76,21 +76,21 @@
       "patientName": "Komal Kapoor",
       "treatment": "Acne Scar Revision",
       "thumbnailUrl": "/gallery/video-thumb-1.jpg",
-      "videoUrl": "https://www.youtube.com/embed/gU9G4D0u9P8"
+      "videoUrl": "https://player.vimeo.com/external/403842180.sd.mp4?s=6c2ef5de98ad53f3e498c0b5f135b11a5b81a81e&profile_id=164&oauth2_token_id=57447761"
     },
     {
       "id": "vid-2",
       "patientName": "Kabir Sharma",
       "treatment": "GFC Hair Restoration",
       "thumbnailUrl": "/gallery/video-thumb-2.jpg",
-      "videoUrl": "https://www.youtube.com/embed/9Bf31_A9V2Q"
+      "videoUrl": "https://player.vimeo.com/external/435674703.sd.mp4?s=7b30efb6727289569ba208d3de602ad43a41b5bf&profile_id=164&oauth2_token_id=57447761"
     },
     {
       "id": "vid-3",
       "patientName": "Shalini Nair",
       "treatment": "Anti-Aging Liquid Lift",
       "thumbnailUrl": "/gallery/video-thumb-3.jpg",
-      "videoUrl": "https://www.youtube.com/embed/WJ_64Wj4iEE"
+      "videoUrl": "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c02cba73e2185d9de28f99e4f5d50bde&profile_id=164&oauth2_token_id=57447761"
     }
   ],
   "successStories": [

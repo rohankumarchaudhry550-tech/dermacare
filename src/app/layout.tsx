@@ -104,14 +104,16 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-brand-bg text-brand-text">
         <AppointmentProvider>
           <PageTransition />
-          <Navbar />
-          {/* Main content wrapper with padding for navbar spacing */}
-          <main className="flex-grow pt-[72px] lg:pt-[80px]">
-            {children}
-          </main>
-          <Footer />
-          <FloatingCTA />
-          <AppointmentModal />
+          <div className="w-full overflow-x-hidden relative flex flex-col min-h-screen">
+            <Navbar />
+            {/* Main content wrapper with padding for navbar spacing */}
+            <main className="flex-grow pt-[72px] lg:pt-[80px]">
+              {children}
+            </main>
+            <Footer />
+            <FloatingCTA />
+            <AppointmentModal />
+          </div>
         </AppointmentProvider>
       </body>
     </html>

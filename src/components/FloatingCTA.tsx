@@ -28,7 +28,7 @@ export default function FloatingCTA() {
   return (
     <>
       {/* Desktop & General Floating CTA Widgets */}
-      <div className="fixed bottom-20 right-6 sm:bottom-8 sm:right-8 z-40 flex flex-col gap-3">
+      <div className="fixed bottom-24 lg:bottom-8 right-6 lg:right-8 z-40 flex flex-col gap-3">
         {/* WhatsApp Icon Button */}
         <button
           onClick={handleWhatsApp}
