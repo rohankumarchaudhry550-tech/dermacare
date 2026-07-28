@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { Star, ShieldCheck, Check, Sparkles, Filter, Plus } from "lucide-react";
 import reviewsData from "@/data/reviews.json";
 import treatmentsData from "@/data/treatments.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ReviewsPage() {
+  const { t } = useLanguage();
   const [reviews, setReviews] = useState(reviewsData.reviews);
   const [starFilter, setStarFilter] = useState<number | "All">("All");
   const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
@@ -65,12 +67,12 @@ export default function ReviewsPage() {
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Patient Voices</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Patient Voices")}</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-poppins">
-            Verified Patient Reviews
+            {t("Verified Patient Reviews")}
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Read transparent, clinical feedback from patients treated at DermaCare+. We preserve trust by verifying every review via medical registration numbers.
+            {t("Read transparent, clinical feedback from patients treated at DermaCare+. We preserve trust by verifying every review via medical registration numbers.")}
           </p>
         </div>
 
@@ -84,12 +86,14 @@ export default function ReviewsPage() {
                 <Star key={i} className="h-5 w-5 fill-current" />
               ))}
             </div>
-            <p className="text-xs text-slate-500 font-semibold">Average rating from {totalReviewsCount} patients</p>
+            <p className="text-xs text-slate-500 font-semibold">
+              {t("Average rating from")} {totalReviewsCount} {t("patients")}
+            </p>
             <button
               onClick={() => setIsWriteReviewOpen(true)}
               className="mt-2 px-5 py-2.5 rounded-full text-xs font-bold text-white btn-gradient flex items-center justify-center gap-1.5 mx-auto cursor-pointer"
             >
-              <Plus className="h-4 w-4" /> Write a Review
+              <Plus className="h-4 w-4" /> {t("Write a Review")}
             </button>
           </div>
 
@@ -119,22 +123,22 @@ export default function ReviewsPage() {
         {/* Success / Transformation Stories */}
         <section className="space-y-6">
           <h2 className="text-2xl font-bold font-poppins text-slate-900 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-primary" /> Clinical Transformation Summaries
+            <Sparkles className="h-5 w-5 text-primary" /> {t("Clinical Transformation Summaries")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviewsData.successStories.map((story) => (
               <div key={story.id} className="bg-white p-6 rounded-3xl border border-accent/20 shadow-sm space-y-4">
                 <div className="space-y-1">
                   <span className="text-[9px] uppercase tracking-wider font-bold text-secondary bg-accent/40 px-2 py-0.5 rounded-full inline-block">
-                    Age {story.age} Case
+                    {t("Age")} {story.age} {t("Case")}
                   </span>
-                  <h3 className="font-poppins font-bold text-sm text-slate-800">{story.title}</h3>
+                  <h3 className="font-poppins font-bold text-sm text-slate-800">{t(story.title)}</h3>
                 </div>
                 <div className="text-xs text-slate-500 space-y-1.5 pt-2 border-t border-slate-100">
-                  <p><strong>Condition:</strong> {story.condition}</p>
-                  <p><strong>Treatment Duration:</strong> {story.duration}</p>
-                  <p><strong>Clinical Protocol:</strong> {story.protocol}</p>
-                  <p className="text-slate-700 font-medium"><strong>Outcome:</strong> {story.result}</p>
+                  <p><strong>{t("Condition:")}</strong> {t(story.condition)}</p>
+                  <p><strong>{t("Treatment Duration:")}</strong> {t(story.duration)}</p>
+                  <p><strong>{t("Clinical Protocol:")}</strong> {t(story.protocol)}</p>
+                  <p className="text-slate-700 font-medium"><strong>{t("Outcome:")}</strong> {t(story.result)}</p>
                 </div>
               </div>
             ))}
@@ -145,7 +149,7 @@ export default function ReviewsPage() {
         <section className="space-y-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 pb-5">
             <h2 className="text-2xl font-bold font-poppins text-slate-900 flex items-center gap-2">
-              <ShieldCheck className="h-6 w-6 text-primary" /> Patient Reviews
+              <ShieldCheck className="h-6 w-6 text-primary" /> {t("Patient Reviews")}
             </h2>
 
             {/* Star Filters */}
@@ -159,7 +163,7 @@ export default function ReviewsPage() {
                     : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                 }`}
               >
-                All Reviews
+                {t("All Reviews")}
               </button>
               {[5, 4, 3].map((star) => (
                 <button
@@ -181,7 +185,7 @@ export default function ReviewsPage() {
           {/* List display */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredReviews.map((rev) => {
-              const treatmentName = treatmentsData.find((t) => t.slug === rev.treatment)?.title || "General Consultation";
+              const treatmentName = treatmentsData.find((tItem) => tItem.slug === rev.treatment)?.title || "General Consultation";
               return (
                 <div key={rev.id} className="bg-white p-6 rounded-3xl border border-accent/20 flex flex-col justify-between shadow-sm">
                   <div className="space-y-3">
@@ -192,11 +196,11 @@ export default function ReviewsPage() {
                         ))}
                       </div>
                       <span className="text-[10px] text-secondary font-bold uppercase tracking-wider bg-accent/40 px-2 py-0.5 rounded-full">
-                        {treatmentName}
+                        {t(treatmentName)}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-slate-600 italic leading-relaxed pt-1">
-                      \"{rev.text}\"
+                      \"{t(rev.text)}\"
                     </p>
                   </div>
 
@@ -206,7 +210,7 @@ export default function ReviewsPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-xs text-slate-800">{rev.name}</h4>
-                      <p className="text-[10px] text-slate-400">Verified Review | {rev.date}</p>
+                      <p className="text-[10px] text-slate-400">{t("Verified Review")} | {t(rev.date)}</p>
                     </div>
                   </div>
                 </div>
@@ -225,7 +229,7 @@ export default function ReviewsPage() {
           />
           <div className="bg-brand-bg rounded-3xl border border-accent/40 shadow-2xl z-10 w-full max-w-md overflow-hidden relative">
             <div className="bg-gradient-to-r from-primary/5 to-secondary/5 px-6 py-4 border-b border-accent/30">
-              <h3 className="font-poppins font-bold text-slate-800">Write a Patient Review</h3>
+              <h3 className="font-poppins font-bold text-slate-800">{t("Write a Patient Review")}</h3>
             </div>
             
             <form onSubmit={handleWriteReviewSubmit} className="p-6 space-y-4">
@@ -234,18 +238,18 @@ export default function ReviewsPage() {
                   <div className="h-12 w-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                     <Check className="h-6 w-6" />
                   </div>
-                  <h4 className="font-bold text-slate-800">Review Submitted!</h4>
-                  <p className="text-xs text-slate-500">Thank you for sharing your experience. We are updating the feedback desk.</p>
+                  <h4 className="font-bold text-slate-800">{t("Review Submitted!")}</h4>
+                  <p className="text-xs text-slate-500">{t("Thank you for sharing your experience. We are updating the feedback desk.")}</p>
                 </div>
               ) : (
                 <>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">{t("Full Name")}</label>
                     <input
                       type="text"
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
-                      placeholder="Enter your name"
+                      placeholder={t("Enter your name")}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-primary bg-white"
                       required
                     />
@@ -253,41 +257,41 @@ export default function ReviewsPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Star Rating</label>
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">{t("Star Rating")}</label>
                       <select
                         value={formRating}
                         onChange={(e) => setFormRating(Number(e.target.value))}
                         className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-primary bg-white"
                       >
-                        <option value={5}>5 Stars</option>
-                        <option value={4}>4 Stars</option>
-                        <option value={3}>3 Stars</option>
+                        <option value={5}>5 {t("Stars") || "Stars"}</option>
+                        <option value={4}>4 {t("Stars") || "Stars"}</option>
+                        <option value={3}>3 {t("Stars") || "Stars"}</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 mb-1">Treatment</label>
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">{t("Treatment") || t("Procedure")}</label>
                       <select
                         value={formTreatment}
                         onChange={(e) => setFormTreatment(e.target.value)}
                         className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-primary bg-white"
                         required
                       >
-                        <option value="">Select Treatment</option>
-                        {treatmentsData.map((t) => (
-                          <option key={t.slug} value={t.slug}>{t.title}</option>
+                        <option value="">{t("Select Treatment")}</option>
+                        {treatmentsData.map((tItem) => (
+                          <option key={tItem.slug} value={tItem.slug}>{t(tItem.title)}</option>
                         ))}
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Review Comments</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">{t("Review Comments")}</label>
                     <textarea
                       value={formText}
                       onChange={(e) => setFormText(e.target.value)}
                       rows={4}
-                      placeholder="Share details of your clinical journey, result timelines, and doctor care..."
+                      placeholder={t("Share details of your clinical journey, result timelines, and doctor care...")}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-primary bg-white resize-none"
                       required
                     />
@@ -297,7 +301,7 @@ export default function ReviewsPage() {
                     type="submit"
                     className="w-full py-3 rounded-full text-xs font-bold text-white btn-gradient flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                   >
-                    Submit Verified Review
+                    {t("Submit Verified Review")}
                   </button>
                 </>
               )}

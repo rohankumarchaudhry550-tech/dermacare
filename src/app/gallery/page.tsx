@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { Sparkles, Image as ImageIcon, Film, Maximize2, X, AlertCircle } from "lucide-react";
 import BeforeAfter from "@/components/ui/BeforeAfter";
 import reviewsData from "@/data/reviews.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function GalleryPage() {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
 
@@ -81,12 +83,12 @@ export default function GalleryPage() {
       <div className="max-w-6xl mx-auto space-y-20 relative z-10">
         {/* Page Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Visual Showcase</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Visual Showcase")}</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-poppins">
-            Clinic Gallery & Results
+            {t("Clinic Gallery & Results")}
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Take a visual tour through our state-of-the-art South Mumbai facility and review our interactive clinical before & after outcomes.
+            {t("Take a visual tour through our state-of-the-art South Mumbai facility and review our interactive clinical before & after outcomes.")}
           </p>
         </div>
 
@@ -94,11 +96,11 @@ export default function GalleryPage() {
         <section className="bg-white p-6 sm:p-10 rounded-[2.5rem] border border-accent/30 shadow-luxury space-y-8">
           <div className="max-w-xl text-left space-y-2">
             <span className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1">
-              <Sparkles className="h-4.5 w-4.5" /> Interactive Demonstration
+              <Sparkles className="h-4.5 w-4.5" /> {t("Interactive Demonstration")}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-poppins">Clinical Case Study</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-poppins">{t("Clinical Case Study")}</h2>
             <p className="text-xs text-slate-500">
-              Drag the dividing bar to observe the resurfacing and scar remodeling results achieved by Dr. Aryan Sharma.
+              {t("Drag the dividing bar to observe the resurfacing and scar remodeling results achieved by Dr. Aryan Sharma.")}
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
@@ -112,20 +114,20 @@ export default function GalleryPage() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-4 text-left">
               <span className="text-[10px] font-bold text-accent uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full inline-block">
-                Cinematic Showcase
+                {t("Cinematic Showcase")}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold font-poppins text-white leading-tight">
-                Walkthrough Our Premium Facility
+                {t("Walkthrough Our Premium Facility")}
               </h2>
               <p className="text-teal-55 text-xs sm:text-sm leading-relaxed">
-                Watch Dr. Aryan Sharma demonstrate our clinical protocols, laser theatres, and patient-first safety hygiene. Experience the premium care and luxury environment from your device.
+                {t("Watch Dr. Aryan Sharma demonstrate our clinical protocols, laser theatres, and patient-first safety hygiene. Experience the premium care and luxury environment from your device.")}
               </p>
               <div className="pt-2 flex flex-wrap gap-2">
                 <span className="text-[10px] bg-white/5 border border-white/15 px-3 py-1.5 rounded-full text-slate-300">
-                  ⚡ FDA-Approved lasers
+                  ⚡ {t("FDA-Approved lasers")}
                 </span>
                 <span className="text-[10px] bg-white/5 border border-white/15 px-3 py-1.5 rounded-full text-slate-300">
-                  🛡️ Class-100 Sterile Zones
+                  🛡️ {t("Class-100 Sterile Zones")}
                 </span>
               </div>
             </div>
@@ -146,7 +148,7 @@ export default function GalleryPage() {
         <section className="space-y-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-slate-200 pb-5">
             <h2 className="text-2xl font-bold font-poppins text-slate-900 flex items-center gap-2">
-              <ImageIcon className="h-6 w-6 text-primary" /> Facility Interiors & Labs
+              <ImageIcon className="h-6 w-6 text-primary" /> {t("Facility Interiors & Labs")}
             </h2>
             
             {/* Category Filter Tabs */}
@@ -162,7 +164,7 @@ export default function GalleryPage() {
                       : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                   }`}
                 >
-                  {cat}
+                  {cat === "All" ? t("All Services") : t(cat)}
                 </button>
               ))}
             </div>
@@ -181,7 +183,7 @@ export default function GalleryPage() {
                   {item.image ? (
                     <img
                       src={item.image}
-                      alt={item.title}
+                      alt={t(item.title)}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
@@ -205,13 +207,13 @@ export default function GalleryPage() {
 
                 <div className="p-6 space-y-2 bg-white">
                   <span className="text-[9px] uppercase tracking-wider font-semibold text-secondary bg-accent/40 px-2 py-0.5 rounded-full inline-block">
-                    {item.category}
+                    {t(item.category)}
                   </span>
                   <h3 className="font-poppins font-bold text-base text-slate-800 group-hover:text-primary transition-colors">
-                    {item.title}
+                    {t(item.title)}
                   </h3>
                   <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
-                    {item.description}
+                    {t(item.description)}
                   </p>
                 </div>
               </div>
@@ -222,7 +224,7 @@ export default function GalleryPage() {
         {/* 3. Video Gallery Section */}
         <section className="space-y-8">
           <h2 className="text-2xl font-bold font-poppins text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-5">
-            <Film className="h-6 w-6 text-primary" /> Video Testimonials & Highlights
+            <Film className="h-6 w-6 text-primary" /> {t("Video Testimonials & Highlights")}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -241,8 +243,8 @@ export default function GalleryPage() {
                   />
                 </div>
                 <div className="p-5 space-y-1">
-                  <h4 className="font-poppins font-bold text-xs sm:text-sm text-slate-800">{vid.patientName}</h4>
-                  <p className="text-[10px] uppercase tracking-wider text-secondary font-semibold">{vid.treatment} Review</p>
+                  <h4 className="font-poppins font-bold text-xs sm:text-sm text-slate-800">{t(vid.patientName)}</h4>
+                  <p className="text-[10px] uppercase tracking-wider text-secondary font-semibold">{t(vid.treatment)} {t("Review") || "Review"}</p>
                 </div>
               </div>
             ))}
@@ -275,7 +277,7 @@ export default function GalleryPage() {
                 {item.image ? (
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={t(item.title)}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -292,10 +294,10 @@ export default function GalleryPage() {
 
               <div className="p-6 bg-white space-y-2 border-t border-accent/20">
                 <span className="text-[9px] uppercase tracking-wider font-semibold text-secondary bg-accent/40 px-2 py-0.5 rounded-full inline-block">
-                  {item.category}
+                  {t(item.category)}
                 </span>
-                <h3 className="font-poppins font-bold text-lg text-slate-800">{item.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
+                <h3 className="font-poppins font-bold text-lg text-slate-800">{t(item.title)}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">{t(item.description)}</p>
               </div>
             </div>
           </div>

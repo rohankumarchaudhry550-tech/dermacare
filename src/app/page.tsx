@@ -28,9 +28,11 @@ import Accordion from "@/components/ui/Accordion";
 import treatmentsData from "@/data/treatments.json";
 import blogData from "@/data/blog.json";
 import reviewsData from "@/data/reviews.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
   const { openModal } = useAppointment();
+  const { t, language } = useLanguage();
 
   // Pick top 4 treatments to feature
   const featuredTreatments = treatmentsData.slice(0, 4);
@@ -91,6 +93,59 @@ export default function Home() {
     }
   ];
 
+  const homeFaqsHi = [
+    {
+      question: "मुझे अपने पहले त्वचा परामर्श (कंसल्टेशन) के दौरान क्या उम्मीद करनी चाहिए?",
+      answer: "आपके प्रारंभिक परामर्श में आपकी त्वचा या बालों के प्रकार का विस्तृत विश्लेषण, आपके चिकित्सा इतिहास की समीक्षा और आपकी चिंताओं पर चर्चा शामिल है। हम त्वचा की परतों का मूल्यांकन करने के लिए यदि आवश्यक हो तो डिजिटल डर्मोस्कोपी का उपयोग करते हैं, जिसके बाद एक व्यक्तिगत लिखित उपचार और घर पर देखभाल की योजना दी जाती है।"
+    },
+    {
+      question: "क्या भारतीय त्वचा के लिए क्लीनिकल स्किन ट्रीटमेंट सुरक्षित हैं?",
+      answer: "बिल्कुल। गलत लेजर सेटिंग्स के उपयोग से भारतीय त्वचा में हाइपरपिग्मेंटेशन (काले धब्बे) होने का खतरा अधिक रहता है। हम केवल US-FDA प्रमाणित तकनीकों (जैसे लॉन्ग-पल्स Nd:YAG और कूलिंग से लैस डायोड लेजर) का उपयोग करते हैं जिन्हें विशेष रूप से भारतीय त्वचा के प्रकारों (Fitzpatrick त्वचा प्रकार III से VI) के लिए कैलिब्रेट किया गया है, जो पूर्ण सुरक्षा और प्रभावशीलता सुनिश्चित करता है।"
+    },
+    {
+      question: "लेजर हेयर रिमूवल के लिए आमतौर पर कितने सत्रों की आवश्यकता होती है?",
+      answer: "अधिकांश रोगियों को 4 से 6 सप्ताह के अंतराल पर 6 से 8 सत्रों की आवश्यकता होती है। ऐसा इसलिए है क्योंकि हेयर लेजर केवल सक्रिय विकास चरण (एनाजेन) के दौरान ही बालों के रोम को निष्क्रिय कर सकते हैं। प्रत्येक सत्र बालों के घनत्व को उत्तरोत्तर कम करता है और विकास को धीमा करता है।"
+    },
+    {
+      question: "क्या परामर्श शुल्क (कंसल्टेशन फीस) है, और क्या पहले से बुकिंग करना अनिवार्य है?",
+      answer: "हां, क्लिनिकल मूल्यांकन के लिए ₹1,000 का मानक परामर्श शुल्क है। प्रतीक्षा समय को कम करने के लिए पहले से बुकिंग करने की अत्यधिक सलाह दी जाती है, हालांकि स्लॉट खाली होने पर हम बिना बुकिंग वाले मरीजों (वॉक-इन) को भी देखते हैं।"
+    },
+    {
+      question: "फ्रैक्शनल CO2 लेजर सत्र के बाद ठीक होने में कितना समय लगता है?",
+      answer: "फ्रैक्शनल लेजर के बाद त्वचा को सामान्य होने में 4 से 7 दिन का समय लगता है। पहले 48 घंटों तक आपको हल्की सनबर्न जैसी लालिमा और सूजन महसूस होगी, जिसके बाद त्वचा पर बारीक पपड़ी बनेगी जो एक सप्ताह के भीतर अपने आप निकल जाती है।"
+    },
+    {
+      question: "क्या बोटोक्स और डर्मल फिलर्स स्थायी होते हैं, और क्या इन्हें बेअसर (रिवर्स) किया जा सकता है?",
+      answer: "ये स्थायी नहीं होते हैं। बोटोक्स 4 से 6 महीने तक झुर्रियों को कम करता है। हाइलूरोनिक एसिड डर्मल फिलर्स 9 से 18 महीने तक चेहरे का वॉल्यूम बनाए रखते हैं। फिलर्स पूरी तरह से प्रतिवर्ती (रिवर्सिबल) हैं और एक क्लिनिकल एंजाइम इंजेक्शन (हायल्यूरोनिडेज) का उपयोग करके तुरंत घोले जा सकते हैं।"
+    },
+    {
+      question: "क्या आप अचानक त्वचा पर गंभीर रैश होने के लिए तत्काल अपॉइंटमेंट प्रदान करते हैं?",
+      answer: "हां, हम गंभीर एलर्जी, दाद (शिंगल्स) के प्रकोप, या दर्दनाक त्वचा संक्रमण जैसी तीव्र स्थितियों के लिए प्रतिदिन प्राथमिकता वाले आपातकालीन स्लॉट आरक्षित रखते हैं। तत्काल सहायता के लिए हमारे रिसेप्शन से सीधे +91 99999 88888 पर संपर्क करें।"
+    },
+    {
+      question: "पीआरपी (PRP) और जीएफसी (GFC) हेयर थेरेपी में क्या अंतर है?",
+      answer: "पारंपरिक पीआरपी में प्लेटलेट्स युक्त प्लाज्मा को अलग करने के लिए खून को सेंट्रीफ्यूज किया जाता है, जिसे बाद में स्कैल्प में इंजेक्ट किया जाता है। जीएफसी (ग्रोथ फैक्टर कंसंट्रेट) इससे एक कदम आगे है: यह शुद्ध ग्रोथ फैक्टर्स जारी करने के लिए लेबोरेटरी ट्यूब में प्लेटलेट्स को पहले से सक्रिय करता है, जिसके परिणामस्वरूप दर्द बहुत कम होता है और बालों का घनत्व तेजी से बेहतर होता है।"
+    },
+    {
+      question: "क्या मुझे केमिकल पील से पहले अपने घर के स्किनकेयर उत्पादों को बंद करने की आवश्यकता है?",
+      answer: "हां। त्वचा को अत्यधिक संवेदनशील होने से बचाने के लिए आपको अपने क्लिनिकल पीलिंग सत्र से 3 दिन पहले रेटिनॉल, ग्लाइकोलिक एसिड, सैलिसिलिक एसिड और प्रिस्क्रिप्शन क्रीम जैसी सक्रिय सामग्रियों का उपयोग बंद कर देना चाहिए।"
+    },
+    {
+      question: "क्या सभी प्रक्रियाएं सीधे डॉ. आर्यन शर्मा द्वारा की जाती हैं?",
+      answer: "सभी इंजेक्शन वाली प्रक्रियाएं (बोटोक्स, फिलर्स, सबसिशन) और हाई-एनर्जी लेजर उपचार विशेष रूप से डॉ. आर्यन शर्मा द्वारा किए जाते हैं। मानक फेशियल, केमिकल पील्स और जीएफसी की तैयारी उनके सीधे पर्यवेक्षण के तहत प्रमाणित थेरेपिस्ट द्वारा की जाती है।"
+    },
+    {
+      question: "क्या नरीमन पॉइंट क्लिनिक में पार्किंग उपलब्ध है?",
+      answer: "हां, हम अपने सभी मरीजों के लिए हमारी इमारत के बेसमेंट में समर्पित मानार्थ वैलेट पार्किंग (कॉम्प्लिमेंट्री वैलेट पार्किंग) प्रदान करते हैं। पार्किंग क्षेत्र से सीधे पहली मंजिल पर हमारे क्लिनिक रिसेप्शन तक लिफ्ट भी उपलब्ध है।"
+    },
+    {
+      question: "क्या आप ऐसी दवाएं लिखते हैं जिन्हें मैं कहीं और से खरीद सकूं?",
+      answer: "हम जेनेरिक योगों के साथ विस्तृत, मानक चिकित्सा नुस्खे प्रदान करते हैं। आप अपनी पसंद की किसी भी फार्मेसी से दवाएं खरीदने के लिए स्वतंत्र हैं, हालांकि आपकी सुविधा के लिए हम हमारे क्लिनिक फार्मेसी में प्रीमियम क्लिनिकल-ग्रेड दवाएं भी रखते हैं।"
+    }
+  ];
+
+  const faqs = language === "hi" ? homeFaqsHi : homeFaqs;
+
   return (
     <div className="relative min-h-screen">
       {/* BACKGROUND FLOATING GRADIENT ACCENTS */}
@@ -108,7 +163,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/40 text-primary-dark font-semibold text-xs tracking-wide uppercase"
             >
-              <Sparkles className="h-4 w-4" /> Mumbai's Premier Skin & Hair Destination
+              <Sparkles className="h-4 w-4" /> {t("Mumbai's Premier Skin & Hair Destination")}
             </motion.div>
             
             <motion.h1
@@ -117,7 +172,11 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1] font-poppins"
             >
-              Healthy Skin Begins with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Expert Care</span>
+              {language === "hi" ? (
+                <>स्वस्थ त्वचा की शुरुआत <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">विशेषज्ञ देखभाल</span> से होती है</>
+              ) : (
+                <>Healthy Skin Begins with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Expert Care</span></>
+              )}
             </motion.h1>
             
             <motion.p
@@ -126,7 +185,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
             >
-              Advanced Dermatology, Hair Restoration, Laser Treatments, and Aesthetic Solutions tailored to your unique skin needs using modern medical technology.
+              {t("Advanced Dermatology, Hair Restoration, Laser Treatments, and Aesthetic Solutions tailored to your unique skin needs using modern medical technology.")}
             </motion.p>
             
             <motion.div
@@ -139,19 +198,19 @@ export default function Home() {
                 onClick={openModal}
                 className="px-8 py-4 rounded-full font-bold text-sm text-white btn-gradient flex items-center gap-2 cursor-pointer shadow-md"
               >
-                Book Appointment <Calendar className="h-4 w-4" />
+                {t("Book Appointment")} <Calendar className="h-4 w-4" />
               </button>
               <Link
                 href="/treatments"
                 className="px-8 py-4 rounded-full font-bold text-sm text-slate-700 hover:text-primary border border-slate-200 hover:border-primary bg-white transition-all flex items-center gap-2 cursor-pointer shadow-sm"
               >
-                Explore Treatments <Compass className="h-4 w-4" />
+                {t("Explore Treatments")} <Compass className="h-4 w-4" />
               </Link>
               <a
                 href="#tour"
                 className="px-6 py-4 rounded-full font-bold text-xs text-secondary hover:text-primary-dark flex items-center gap-1.5 transition-colors cursor-pointer"
               >
-                <Play className="h-4 w-4 shrink-0 fill-current" /> Watch Clinic Tour
+                <Play className="h-4 w-4 shrink-0 fill-current" /> {t("Watch Clinic Tour")}
               </a>
             </motion.div>
           </div>
@@ -188,25 +247,25 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-primary font-poppins">
               <StatsCounter target={25} suffix="+" />
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-slate-500">Years Experience</p>
+            <p className="text-xs sm:text-sm font-medium text-slate-500">{t("Years Experience")}</p>
           </div>
           <div className="space-y-1">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-primary font-poppins">
               <StatsCounter target={30000} suffix="+" />
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-slate-500">Happy Patients</p>
+            <p className="text-xs sm:text-sm font-medium text-slate-500">{t("Happy Patients")}</p>
           </div>
           <div className="space-y-1">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-primary font-poppins">
               <StatsCounter target={150} suffix="+" />
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-slate-500">Treatments Offered</p>
+            <p className="text-xs sm:text-sm font-medium text-slate-500">{t("Treatments Offered")}</p>
           </div>
           <div className="space-y-1">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-primary font-poppins">
               <StatsCounter target={98} suffix="%" />
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-slate-500">Patient Satisfaction</p>
+            <p className="text-xs sm:text-sm font-medium text-slate-500">{t("Patient Satisfaction")}</p>
           </div>
         </motion.div>
       </section>
@@ -233,30 +292,30 @@ export default function Home() {
                 />
               </div>
               <h3 className="font-poppins font-bold text-lg text-slate-800">Dr. Aryan Sharma</h3>
-              <p className="text-xs text-secondary font-semibold">Chief Consultant & Surgeon</p>
+              <p className="text-xs text-secondary font-semibold">{t("Chief Consultant & Surgeon")}</p>
               <p className="text-xs text-slate-500 mt-3 leading-relaxed">
-                Expert in complex aesthetic lasers, dermal injection science, and clinical skin restoration therapies.
+                {t("Expert in complex aesthetic lasers, dermal injection science, and clinical skin restoration therapies.")}
               </p>
             </div>
           </div>
 
           <div className="lg:col-span-7 space-y-6 text-left">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Meet the Specialist</span>
+            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Meet the Specialist")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins">
-              Pioneering Clinical Artistry & Scientific Trust
+              {t("Pioneering Clinical Artistry & Scientific Trust")}
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Dr. Aryan Sharma is an award-winning dermatologist with over 15 years of experiences in clinical dermatology and aesthetic injectables. Trained at the prestigious AIIMS New Delhi and holding advanced fellowships from London & Seoul, he brings global skincare benchmarks to India.
+              {t("Dr. Aryan Sharma is an award-winning dermatologist with over 15 years of experiences in clinical dermatology and aesthetic injectables. Trained at the prestigious AIIMS New Delhi and holding advanced fellowships from London & Seoul, he brings global skincare benchmarks to India.")}
             </p>
             <blockquote className="border-l-4 border-primary pl-4 italic text-sm text-slate-500 my-4 bg-primary/[0.01] py-2">
-              \"Skin health is more than cosmetic. It is the canvas of your immune system. Every procedure we do blends rigorous medical safety with subtle natural artistry.\"
+              "{t("Skin health is more than cosmetic. It is the canvas of your immune system. Every procedure we do blends rigorous medical safety with subtle natural artistry.")}"
             </blockquote>
             <div className="pt-2">
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold text-white btn-gradient shadow-md cursor-pointer"
               >
-                Read Professional Biography <ArrowRight className="h-4 w-4" />
+                {t("Read Professional Biography")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -274,16 +333,16 @@ export default function Home() {
         >
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
             <div>
-              <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Clinical Services</span>
+              <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Clinical Services")}</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins mt-1">
-                Featured Dermatological Treatments
+                {t("Featured Dermatological Treatments")}
               </h2>
             </div>
             <Link
               href="/treatments"
               className="text-xs font-bold text-primary hover:text-primary-dark flex items-center gap-1 hover:translate-x-1 transition-all"
             >
-              View All 22 Treatments <ArrowRight className="h-4 w-4" />
+              {t("View All 22 Treatments")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -295,17 +354,17 @@ export default function Home() {
               >
                 <div>
                   <span className="text-[9px] uppercase tracking-wider font-semibold text-secondary bg-accent/40 px-2 py-0.5 rounded-full block w-max">
-                    {treatment.category}
+                    {t(treatment.category)}
                   </span>
                   <h3 className="font-poppins font-bold text-lg text-slate-800 mt-4 group-hover:text-primary transition-colors">
-                    {treatment.title}
+                    {t(treatment.title)}
                   </h3>
                   <p className="text-xs text-slate-500 mt-2 leading-relaxed line-clamp-3">
-                    {treatment.shortDescription}
+                    {t(treatment.shortDescription)}
                   </p>
                 </div>
                 <div className="pt-6 border-t border-accent/20 mt-6 flex justify-between items-center">
-                  <span className="text-[10px] font-bold text-slate-400 group-hover:text-primary transition-colors">Learn More</span>
+                  <span className="text-[10px] font-bold text-slate-400 group-hover:text-primary transition-colors">{t("Learn More")}</span>
                   <Link
                     href={`/treatments/${treatment.slug}`}
                     className="h-8 w-8 rounded-full bg-white border border-accent/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all cursor-pointer"
@@ -329,12 +388,12 @@ export default function Home() {
           className="space-y-16"
         >
           <div className="text-center space-y-4">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Quality Indicators</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Quality Indicators")}</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins">
-            Why Patients Trust DermaCare+
+            {t("Why Patients Trust DermaCare+")}
           </h2>
           <p className="text-slate-500 text-sm max-w-2xl mx-auto">
-            We hold ourselves to strict medical standards, ensuring a sterile clinical layout coupled with bespoke hospitality.
+            {t("We hold ourselves to strict medical standards, ensuring a sterile clinical layout coupled with bespoke hospitality.")}
           </p>
         </div>
 
@@ -353,8 +412,8 @@ export default function Home() {
               <div className="h-12 w-12 rounded-2xl bg-accent/40 flex items-center justify-center mb-4">
                 {item.icon}
               </div>
-              <h3 className="font-poppins font-bold text-sm text-slate-800 mb-2">{item.title}</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+              <h3 className="font-poppins font-bold text-sm text-slate-800 mb-2">{t(item.title)}</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">{t(item.desc)}</p>
             </div>
           ))}
         </div>
@@ -366,12 +425,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center space-y-4 mb-16">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Our Protocol</span>
+            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Our Protocol")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-poppins text-white">
-              The Treatment Journey
+              {t("Your Treatment Journey") || t("The Treatment Journey")}
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
-              How we guide patients from the initial consultation to flawless long-term clinical maintenance.
+              {t("How we guide patients from the initial consultation to flawless long-term clinical maintenance.")}
             </p>
           </div>
 
@@ -387,8 +446,8 @@ export default function Home() {
                 <div className="h-16 w-16 rounded-full border border-secondary/40 bg-secondary/5 text-secondary flex items-center justify-center mx-auto text-lg font-bold font-mono">
                   {step.num}
                 </div>
-                <h3 className="font-poppins font-bold text-sm text-white">{step.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed px-4">{step.desc}</p>
+                <h3 className="font-poppins font-bold text-sm text-white">{t(step.title)}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed px-4">{t(step.desc)}</p>
                 {idx < 4 && (
                   <div className="hidden md:block absolute top-8 left-[70%] w-[60%] h-0.5 border-t border-dashed border-secondary/20 z-0" />
                 )}
@@ -402,24 +461,24 @@ export default function Home() {
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 space-y-6 text-left">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Proven Outcomes</span>
+            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Interactive Demonstration") || t("Proven Outcomes")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins leading-tight">
-              Real Patients, Verified Results
+              {t("Clinical Case Study") || t("Real Patients, Verified Results")}
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Drag the interactive slider to review actual skin texture improvements. We believe in visual medical proof, showcasing acne scar clearance, pigmentation reduction, and hair growth.
+              {t("Drag the dividing bar to observe the resurfacing and scar remodeling results achieved by Dr. Aryan Sharma.")}
             </p>
             <div className="space-y-4 text-xs text-slate-500">
-              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> No photo filter manipulations</p>
-              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> Identical clinical lighting benchmarks</p>
-              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> Fully consent-cleared patient success records</p>
+              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> {t("No photo filter manipulations") || "कोई फोटो फ़िल्टर हेरफेर नहीं"}</p>
+              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> {t("Identical clinical lighting benchmarks") || "समान क्लिनिक लाइटिंग मानक"}</p>
+              <p className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-primary rounded-full" /> {t("Fully consent-cleared patient success records") || "पूर्ण सहमति-स्वीकृत रोगी सफलता रिकॉर्ड"}</p>
             </div>
             <div className="pt-2">
               <Link
                 href="/gallery"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold text-white btn-gradient shadow-md cursor-pointer"
               >
-                View Before & After Gallery <ArrowRight className="h-4 w-4" />
+                {t("Clinic Gallery & Results") || t("View Before & After Gallery")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -434,11 +493,11 @@ export default function Home() {
       <section className="py-20 px-6 bg-white border-y border-accent/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Patient Reviews</span>
+            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("What Our Patients Say")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins">
-              Verifications of Trust
+              {t("Verified Reviews & Case Studies")}
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm">Average 4.9/5 stars based on 2,350+ certified Google and Clinic reviews.</p>
+            <p className="text-slate-500 text-xs sm:text-sm">{t("Average 4.9/5 stars based on 2,350+ certified Google and Clinic reviews.")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -451,7 +510,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 italic leading-relaxed">
-                    \"{rev.text}\"
+                    "{t(rev.text)}"
                   </p>
                 </div>
                 <div className="pt-6 border-t border-accent/20 mt-6 flex items-center gap-3">
@@ -459,8 +518,8 @@ export default function Home() {
                     {rev.avatar}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-xs text-slate-800">{rev.name}</h4>
-                    <p className="text-[10px] text-slate-400">Verified Patient | {rev.date}</p>
+                    <h4 className="font-semibold text-xs text-slate-800">{t(rev.name)}</h4>
+                    <p className="text-[10px] text-slate-400">{t("Verified Patient")} | {rev.date}</p>
                   </div>
                 </div>
               </div>
@@ -471,7 +530,7 @@ export default function Home() {
               href="/reviews"
               className="text-xs font-bold text-primary hover:text-primary-dark underline underline-offset-4 cursor-pointer"
             >
-              Read all verified patient reviews
+              {t("Read all verified patient reviews")}
             </Link>
           </div>
         </div>
@@ -487,12 +546,12 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-0" />
           
           <div className="relative z-10 max-w-2xl space-y-6">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest block">Interactive Video Tour</span>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest block">{t("Interactive Video Tour")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-poppins text-white leading-tight">
-              A Virtual Walkthrough of Our Luxury Facility
+              {t("A Virtual Walkthrough of Our Luxury Facility")}
             </h2>
             <p className="text-teal-50/80 text-xs sm:text-sm leading-relaxed">
-              Take a walk through our premier consulting rooms, diagnostic laser zones, and sterilizing medical theater. Experience hospitality and clinical safety from your screen.
+              {t("Take a walk through our premier consulting rooms, diagnostic laser zones, and sterilizing medical theater. Experience hospitality and clinical safety from your screen.")}
             </p>
             <div className="pt-4 flex gap-4">
               <a
@@ -500,13 +559,13 @@ export default function Home() {
                 target="_blank"
                 className="px-6 py-3.5 rounded-full text-xs font-bold bg-white text-primary hover:bg-accent transition-colors flex items-center gap-2 cursor-pointer shadow-md"
               >
-                <Play className="h-4 w-4 fill-current text-primary" /> Play Video Tour
+                <Play className="h-4 w-4 fill-current text-primary" /> {t("Play Video Tour")}
               </a>
               <Link
                 href="/gallery"
                 className="px-6 py-3.5 rounded-full text-xs font-bold border border-white/30 text-white hover:bg-white/10 transition-colors flex items-center gap-2 cursor-pointer"
               >
-                Inspect Interior Photos
+                {t("Inspect Interior Photos")}
               </Link>
             </div>
           </div>
@@ -518,16 +577,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
             <div>
-              <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Educational Blog</span>
+              <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Educational Blog")}</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins mt-1">
-                Latest Clinical Insights & Care Guides
+                {t("Latest Clinical Insights & Care Guides")}
               </h2>
             </div>
             <Link
               href="/blog"
               className="text-xs font-bold text-primary hover:text-primary-dark flex items-center gap-1 hover:translate-x-1 transition-all"
             >
-              Open Medical Blog <ArrowRight className="h-4 w-4" />
+              {t("Open Medical Blog")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -536,14 +595,14 @@ export default function Home() {
               <div key={post.slug} className="bg-brand-bg rounded-3xl overflow-hidden border border-accent/20 flex flex-col justify-between shadow-sm hover:shadow-luxury transition-all duration-300">
                 <div className="p-6 space-y-4">
                   <div className="flex justify-between items-center text-[10px] text-secondary font-bold uppercase tracking-wider">
-                    <span>{post.category}</span>
+                    <span>{t(post.category)}</span>
                     <span>{post.readTime}</span>
                   </div>
                   <h3 className="font-poppins font-bold text-base sm:text-lg text-slate-800 line-clamp-2 hover:text-primary transition-colors">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link href={`/blog/${post.slug}`}>{t(post.title)}</Link>
                   </h3>
                   <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                    {t(post.excerpt)}
                   </p>
                 </div>
                 <div className="p-6 border-t border-accent/10 flex justify-between items-center bg-white">
@@ -552,7 +611,7 @@ export default function Home() {
                     href={`/blog/${post.slug}`}
                     className="text-xs font-semibold text-primary hover:text-primary-dark flex items-center gap-0.5 cursor-pointer"
                   >
-                    Read Article <ArrowRight className="h-3 w-3" />
+                    {t("Read Article")} <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
               </div>
@@ -564,32 +623,32 @@ export default function Home() {
       {/* 11. FAQ ACCORDION SECTION */}
       <section className="py-20 px-6 max-w-4xl mx-auto">
         <div className="text-center space-y-4 mb-16">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Information Desk</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Information Desk")}</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins">
-            Frequently Answered Questions
+            {t("Frequently Answered Questions")}
           </h2>
-          <p className="text-slate-500 text-xs sm:text-sm">Get clear clinical answers regarding procedures, downtime, safety, and policies.</p>
+          <p className="text-slate-500 text-xs sm:text-sm">{t("Get clear clinical answers regarding procedures, downtime, safety, and policies.")}</p>
         </div>
 
-        <Accordion items={homeFaqs} />
+        <Accordion items={faqs} />
       </section>
 
       {/* 12. CLINIC LOCATION MAP PREVIEW */}
       <section className="py-20 px-6 bg-brand-card border-t border-accent/20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 space-y-6 text-left">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Our Location</span>
+            <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Our Location")}</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-poppins leading-tight">
-              DermaCare+ Nariman Point, Mumbai
+              {t("DermaCare+ Nariman Point, Mumbai")}
             </h2>
             <p className="text-slate-550 text-xs sm:text-sm leading-relaxed">
-              Located in the premium commercial district of South Mumbai. Easily accessible by road and train, offering state-of-the-art facilities, private waiting rooms, and personalized care.
+              {t("Located in the premium commercial district of South Mumbai. Easily accessible by road and train, offering state-of-the-art facilities, private waiting rooms, and personalized care.")}
             </p>
             
             <div className="space-y-4 text-xs text-slate-600">
               <p className="flex items-start gap-2.5">
                 <MapPin className="h-4.5 w-4.5 text-primary shrink-0 mt-0.5" />
-                <span>102-103, Nariman Point Road, Chambers, Mumbai, MH - 400021</span>
+                <span>{t("102-103, Nariman Point Road, Chambers, Mumbai, MH - 400021")}</span>
               </p>
               <p className="flex items-center gap-2.5">
                 <Phone className="h-4.5 w-4.5 text-primary" />
@@ -597,13 +656,16 @@ export default function Home() {
               </p>
               <p className="flex items-start gap-2.5">
                 <Clock className="h-4.5 w-4.5 text-primary shrink-0 mt-0.5" />
-                <span>Mon - Sat: 10:00 AM - 07:00 PM <br /> Sunday: Closed (Prior booking only)</span>
+                <span>
+                  {t("Monday - Saturday")}: 10:00 AM - 07:00 PM <br /> 
+                  {t("Sunday")}: {t("Closed")} ({t("Prior Booking Only")})
+                </span>
               </p>
               <p className="flex items-start gap-2.5 bg-primary/5 p-4 rounded-xl border border-primary/10">
                 <Car className="h-4.5 w-4.5 text-primary shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-slate-700 block font-semibold">Parking Information:</strong>
-                  Complimentary basement valet parking is available for all registered patients.
+                  <strong className="text-slate-700 block font-semibold">{t("Parking Information:")}</strong>
+                  {t("Complimentary basement valet parking is available for all registered patients.")}
                 </span>
               </p>
             </div>
@@ -621,14 +683,14 @@ export default function Home() {
                 <MapPin className="h-6 w-6" />
               </div>
               <span className="text-xs font-bold text-slate-800 bg-white/95 px-3 py-1.5 rounded-full border border-accent shadow-sm block">
-                DermaCare+ Clinic
+                {t("DermaCare+ Clinic") || "DermaCare+ Clinic"}
               </span>
               <a
                 href="https://maps.google.com"
                 target="_blank"
                 className="text-[10px] font-semibold text-secondary hover:text-primary-dark underline cursor-pointer"
               >
-                Get Driving Directions
+                {t("Get Driving Directions")}
               </a>
             </div>
           </div>
@@ -637,25 +699,25 @@ export default function Home() {
 
       {/* 13. GLOBAL CALL TO ACTION */}
       <section className="py-20 px-6 max-w-5xl mx-auto text-center space-y-6">
-        <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Begin Your Transformation</span>
+        <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Begin Your Transformation")}</span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 font-poppins leading-tight">
-          Ready to Reveal Your Healthy, Radiant Skin?
+          {t("Ready to Reveal Your Healthy, Radiant Skin?")}
         </h2>
         <p className="text-slate-500 text-sm max-w-lg mx-auto leading-relaxed">
-          Book your private consult today with Dr. Aryan Sharma. Together, we will create a tailored clinical path to skin and hair confidence.
+          {t("Book your private consult today with Dr. Aryan Sharma. Together, we will create a tailored clinical path to skin and hair confidence.")}
         </p>
         <div className="pt-4 flex justify-center gap-4">
           <button
             onClick={openModal}
             className="px-8 py-4 rounded-full font-bold text-sm text-white btn-gradient shadow-md flex items-center gap-2 cursor-pointer"
           >
-            Book Appointment <Calendar className="h-4 w-4" />
+            {t("Book Appointment")} <Calendar className="h-4 w-4" />
           </button>
           <Link
             href="/contact"
             className="px-8 py-4 rounded-full font-bold text-sm text-slate-700 hover:text-primary border border-slate-200 hover:border-primary bg-white transition-all flex items-center gap-2 cursor-pointer"
           >
-            Contact Clinic
+            {t("Contact Clinic")}
           </Link>
         </div>
       </section>

@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Search, ArrowRight, BookOpen, Mail, Sparkles, Check } from "lucide-react";
 import blogData from "@/data/blog.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogPage() {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -40,12 +42,12 @@ export default function BlogPage() {
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Medical Education</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Medical Education")}</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-poppins">
-            Clinical Insights & Care Guides
+            {t("Clinical Insights & Care Guides")}
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Dermatologist-authored guides on skin health, hair rejuvenation, laser safety, and modern anti-aging options.
+            {t("Dermatologist-authored guides on skin health, hair rejuvenation, laser safety, and modern anti-aging options.")}
           </p>
         </div>
 
@@ -57,7 +59,7 @@ export default function BlogPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search articles (e.g., sunscreen, skin barrier, retinol, GFC...)"
+                placeholder={t("Search articles (e.g., sunscreen, skin barrier, retinol, GFC...)")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
@@ -65,7 +67,7 @@ export default function BlogPage() {
             </div>
 
             <div className="space-y-2">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Browse Categories:</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t("Browse Categories:")}</span>
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat) => (
                   <button
@@ -78,7 +80,7 @@ export default function BlogPage() {
                         : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                     }`}
                   >
-                    {cat}
+                    {cat === "All" ? t("All Services") : t(cat)}
                   </button>
                 ))}
               </div>
@@ -89,17 +91,17 @@ export default function BlogPage() {
           <div className="lg:col-span-4 bg-slate-900 text-slate-350 p-6 rounded-3xl border border-slate-850 flex flex-col justify-between gap-4">
             <div className="space-y-1">
               <h4 className="font-poppins font-bold text-sm text-white flex items-center gap-1.5">
-                <Mail className="h-4.5 w-4.5 text-secondary" /> Subscribe to Updates
+                <Mail className="h-4.5 w-4.5 text-secondary" /> {t("Subscribe to Updates")}
               </h4>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                Receive monthly clinical advice, laser guidelines, and exclusive invitations to patient seminars.
+                {t("Receive monthly clinical advice, laser guidelines, and exclusive invitations to patient seminars.")}
               </p>
             </div>
 
             <form onSubmit={handleNewsletterSubmit} className="space-y-2">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={t("Your email address")}
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:border-primary text-xs text-white placeholder-slate-500"
@@ -111,10 +113,10 @@ export default function BlogPage() {
               >
                 {newsletterSuccess ? (
                   <>
-                    <Check className="h-4 w-4" /> Subscribed
+                    <Check className="h-4 w-4" /> {t("Subscribed")}
                   </>
                 ) : (
-                  "Subscribe Now"
+                  t("Subscribe Now")
                 )}
               </button>
             </form>
@@ -132,14 +134,14 @@ export default function BlogPage() {
                 >
                   <div className="p-6 space-y-4">
                     <div className="flex justify-between items-center text-[10px] text-secondary font-bold uppercase tracking-wider">
-                      <span>{post.category}</span>
-                      <span>{post.readTime}</span>
+                      <span>{t(post.category)}</span>
+                      <span>{t(post.readTime) || post.readTime}</span>
                     </div>
                     <h3 className="font-poppins font-bold text-base sm:text-lg text-slate-850 line-clamp-2 group-hover:text-primary transition-colors">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      <Link href={`/blog/${post.slug}`}>{t(post.title)}</Link>
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
-                      {post.excerpt}
+                      {t(post.excerpt)}
                     </p>
                   </div>
 
@@ -148,7 +150,7 @@ export default function BlogPage() {
                       <div className="h-6 w-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[9px] font-bold">
                         AS
                       </div>
-                      <span className="text-[10px] text-slate-500 font-semibold">{post.author}</span>
+                      <span className="text-[10px] text-slate-500 font-semibold">{t(post.author)}</span>
                     </div>
                     <Link
                       href={`/blog/${post.slug}`}
@@ -162,8 +164,8 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-slate-200 p-8">
-              <h3 className="font-poppins font-bold text-slate-800 text-lg">No matching medical articles</h3>
-              <p className="text-slate-500 text-xs mt-1">Try resetting filters or searching with alternative dermatological keywords.</p>
+              <h3 className="font-poppins font-bold text-slate-800 text-lg">{t("No matching medical articles")}</h3>
+              <p className="text-slate-500 text-xs mt-1">{t("Try resetting filters or searching with alternative dermatological keywords.")}</p>
               <button
                 onClick={() => {
                   setSearchQuery("");
@@ -171,7 +173,7 @@ export default function BlogPage() {
                 }}
                 className="mt-4 px-5 py-2.5 rounded-full text-xs font-semibold text-white btn-gradient shadow cursor-pointer"
               >
-                Reset Search
+                {t("Reset Search")}
               </button>
             </div>
           )}

@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Sparkles, Phone, Mail, MapPin, Clock, Send, ShieldAlert, Check } from "lucide-react";
 import BrandLogo from "@/components/ui/BrandLogo";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -56,22 +58,22 @@ export default function Footer() {
                 DermaCare<span className="text-accent font-light">+</span>
               </span>
               <span className="text-[9px] uppercase tracking-widest text-accent font-bold block -mt-1 opacity-80">
-                Aesthetic & Skin Clinic
+                {t("Aesthetic & Skin Clinic")}
               </span>
             </div>
           </Link>
           <p className="text-xs text-slate-400 leading-relaxed">
-            World-class medical dermatology and premium aesthetic procedures delivered by board-certified dermatologists using FDA-approved technology.
+            {t("World-class medical dermatology and premium aesthetic procedures delivered by board-certified dermatologists using FDA-approved technology.")}
           </p>
 
           <form onSubmit={handleSubscribe} className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">Newsletter</label>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">{t("Newsletter")}</label>
             <div className="flex rounded-full overflow-hidden border border-slate-700 bg-slate-850 p-1">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder={t("Enter your email")}
                 className="w-full bg-transparent pl-3 pr-2 text-xs text-white focus:outline-none placeholder-slate-500"
                 required
               />
@@ -83,7 +85,7 @@ export default function Footer() {
               </button>
             </div>
             {subscribed && (
-              <p className="text-[10px] text-secondary font-medium">Successfully subscribed to medical updates!</p>
+              <p className="text-[10px] text-secondary font-medium">{t("Successfully subscribed to medical updates!")}</p>
             )}
           </form>
         </div>
@@ -91,7 +93,7 @@ export default function Footer() {
         {/* Column 2: Quick Links */}
         <div>
           <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-6 border-l-2 border-secondary pl-3">
-            Quick Links
+            {t("Quick Links")}
           </h4>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
             {quickLinks.map((link, idx) => (
@@ -100,7 +102,7 @@ export default function Footer() {
                   href={link.path}
                   className="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
                 >
-                  <span className="h-1 w-1 bg-secondary rounded-full" /> {link.name}
+                  <span className="h-1 w-1 bg-secondary rounded-full" /> {t(link.name)}
                 </Link>
               </li>
             ))}
@@ -110,7 +112,7 @@ export default function Footer() {
         {/* Column 3: Featured Treatments */}
         <div>
           <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-6 border-l-2 border-secondary pl-3">
-            Top Treatments
+            {t("Top Treatments")}
           </h4>
           <ul className="space-y-3">
             {topTreatments.map((treatment, idx) => (
@@ -119,7 +121,7 @@ export default function Footer() {
                   href={treatment.path}
                   className="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
                 >
-                  <span className="h-1 w-1 bg-primary rounded-full" /> {treatment.name}
+                  <span className="h-1 w-1 bg-primary rounded-full" /> {t(treatment.name)}
                 </Link>
               </li>
             ))}
@@ -130,12 +132,12 @@ export default function Footer() {
         <div className="space-y-6">
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-6 border-l-2 border-secondary pl-3">
-              Clinic Contact
+              {t("Clinic Contact")}
             </h4>
             <div className="space-y-3 text-xs text-slate-400">
               <p className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                <span>102-103, Nariman Point Road, Chambers, Mumbai, MH - 400021</span>
+                <span>{t("102-103, Nariman Point Road, Chambers, Mumbai, MH - 400021")}</span>
               </p>
               <p className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-secondary" />
@@ -148,9 +150,9 @@ export default function Footer() {
               <p className="flex items-start gap-2.5">
                 <Clock className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
                 <span>
-                  Mon - Sat: 10:00 AM - 07:00 PM
+                  {t("Monday - Saturday")}: 10:00 AM - 07:00 PM
                   <br />
-                  Sunday: Closed (Prior Booking Only)
+                  {t("Sunday")}: {t("Closed")} ({t("Prior Booking Only")})
                 </span>
               </p>
             </div>
@@ -160,9 +162,9 @@ export default function Footer() {
           <div className="bg-red-950/20 border border-red-900/30 p-4 rounded-2xl flex gap-3 items-start">
             <ShieldAlert className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs font-bold text-red-400 uppercase tracking-wider">Emergency Skin Allergy?</h5>
+              <h5 className="text-xs font-bold text-red-400 uppercase tracking-wider">{t("Emergency Skin Allergy?")}</h5>
               <p className="text-[10px] text-slate-400 mt-1">
-                Reach our on-duty clinician immediately at <span className="font-semibold text-white">+91 99999 88888</span>.
+                {t("Reach our on-duty clinician immediately at")} <span className="font-semibold text-white">+91 99999 88888</span>.
               </p>
             </div>
           </div>
@@ -171,12 +173,12 @@ export default function Footer() {
 
       {/* Footer Bottom */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-        <p>© 2026 DermaCare+. All rights reserved.</p>
+        <p>© 2026 DermaCare+. {t("All rights reserved.")}</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <Link href="/privacy" className="hover:text-slate-400 transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-slate-400 transition-colors">Terms of Service</Link>
-          <Link href="/disclaimer" className="hover:text-slate-400 transition-colors">Medical Disclaimer</Link>
-          <Link href="/sitemap" className="hover:text-slate-400 transition-colors">Sitemap</Link>
+          <Link href="/privacy" className="hover:text-slate-400 transition-colors">{t("Privacy Policy")}</Link>
+          <Link href="/terms" className="hover:text-slate-400 transition-colors">{t("Terms of Service")}</Link>
+          <Link href="/disclaimer" className="hover:text-slate-400 transition-colors">{t("Medical Disclaimer")}</Link>
+          <Link href="/sitemap" className="hover:text-slate-400 transition-colors">{t("Sitemap")}</Link>
         </div>
       </div>
     </footer>

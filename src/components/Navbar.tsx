@@ -7,10 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar } from "lucide-react";
 import { useAppointment } from "@/context/AppointmentContext";
 import BrandLogo from "@/components/ui/BrandLogo";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const { openModal } = useAppointment();
+  const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -49,50 +51,50 @@ export default function Navbar() {
     <>
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-secondary z-[60] transition-all duration-100"
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-primary to-secondary z-[60] transition-all duration-100 opacity-70"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <header
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 rounded-[1.8rem] border ${
+        className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl transition-all duration-300 rounded-full border ${
           scrolled 
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-accent/45" 
-            : "bg-white/90 backdrop-blur-sm border-accent/20"
-        } py-3.5`}
+            ? "bg-white/85 backdrop-blur-md shadow-sm border-slate-100/85" 
+            : "bg-white/75 backdrop-blur-sm border-slate-100/50"
+        } py-2`}
       >
-        <div className="w-full px-6 flex justify-between items-center">
+        <div className="w-full px-5 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-10 w-10 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+            <div className="h-8.5 w-8.5 flex items-center justify-center group-hover:scale-102 transition-transform duration-300">
               <BrandLogo className="h-full w-full text-primary" />
             </div>
             <div>
-              <span className="font-poppins font-extrabold text-xl tracking-tight text-slate-800 flex items-center gap-0.5">
+              <span className="font-poppins font-extrabold text-base tracking-tight text-slate-800 flex items-center gap-0.5 leading-none">
                 DermaCare<span className="text-primary font-light">+</span>
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-secondary font-bold block -mt-1 opacity-90">
+              <span className="text-[8px] uppercase tracking-wider text-secondary font-semibold block mt-0.5 opacity-80">
                 Aesthetic & Skin Clinic
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
               const isActive = pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-sm font-medium tracking-wide transition-colors relative py-1.5 ${
-                    isActive ? "text-primary font-bold" : "text-slate-600 hover:text-primary"
+                  className={`text-xs font-semibold tracking-wide transition-colors relative py-1 ${
+                    isActive ? "text-primary font-bold" : "text-slate-650 hover:text-primary"
                   }`}
                 >
-                  {link.name}
+                  {t(link.name)}
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full"
                     />
                   )}
                 </Link>
@@ -100,25 +102,37 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Book Appointment CTA Button */}
-          <div className="hidden lg:block">
+          {/* Controls Wrapper: Language Toggle & Appointment / Mobile Hamburger */}
+          <div className="flex items-center gap-2">
+            {/* Compact Language Toggle Button */}
             <button
-              onClick={openModal}
-              className="px-6 py-3 rounded-full text-xs font-bold text-white btn-gradient flex items-center gap-2 cursor-pointer shadow-sm"
+              onClick={() => setLanguage(language === "en" ? "hi" : "en")}
+              className="h-8 w-11 rounded-full border border-slate-100/80 bg-white/90 text-[9px] font-extrabold text-primary hover:border-primary/20 hover:bg-accent/10 flex items-center justify-center cursor-pointer transition-all duration-200 shadow-sm select-none focus:outline-none relative z-50 animate-fade-in"
+              title={language === "en" ? "हिन्दी में अनुवाद करें" : "Switch to English"}
             >
-              <Calendar className="h-3.5 w-3.5" /> Book Appointment
+              {language === "en" ? "हि" : "EN"}
+            </button>
+
+            {/* Book Appointment CTA Button */}
+            <div className="hidden lg:block">
+              <button
+                onClick={openModal}
+                className="px-5 py-2.5 rounded-full text-[11px] font-bold text-white btn-gradient flex items-center gap-1.5 cursor-pointer shadow-sm"
+              >
+                <Calendar className="h-3 w-3" /> {t("Book Appointment")}
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden h-9 w-9 rounded-full border border-slate-100/80 bg-white/80 backdrop-blur-sm shadow-sm flex flex-col items-center justify-center text-slate-700 hover:text-primary hover:border-primary/20 transition-all duration-300 cursor-pointer focus:outline-none gap-[3px] relative z-50 overflow-hidden"
+            >
+              <span className={`block h-[1.5px] bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-4.5 translate-y-[4.5px] rotate-45' : 'w-4.5'}`} />
+              <span className={`block h-[1.5px] bg-current rounded-full transition-all duration-200 w-4.5 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`block h-[1.5px] bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-4.5 -translate-y-[4.5px] -rotate-45' : 'w-3'}`} />
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden h-11 w-11 rounded-full border border-accent/45 bg-white/80 backdrop-blur-sm shadow-sm flex flex-col items-center justify-center text-slate-700 hover:text-primary hover:border-primary/30 transition-all duration-300 cursor-pointer focus:outline-none gap-[4px] relative z-50 overflow-hidden"
-          >
-            <span className={`block h-[2px] bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-5 rotate-45 translate-y-[6px]' : 'w-5 -translate-x-[2px]'}`} />
-            <span className={`block h-[2px] bg-current rounded-full transition-all duration-200 w-5 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-            <span className={`block h-[2px] bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-5 -rotate-45 -translate-y-[6px]' : 'w-3.5 translate-x-[1.5px]'}`} />
-          </button>
         </div>
       </header>
 
@@ -180,7 +194,7 @@ export default function Navbar() {
                               : "text-slate-650 hover:text-primary pl-2 hover:pl-3"
                           }`}
                         >
-                          {link.name}
+                          {t(link.name)}
                         </Link>
                       </motion.div>
                     );
@@ -202,7 +216,7 @@ export default function Navbar() {
                   }}
                   className="w-full py-4 rounded-full text-sm font-bold text-white btn-gradient flex items-center justify-center gap-2 shadow-md cursor-pointer"
                 >
-                  <Calendar className="h-4 w-4" /> Book Appointment
+                  <Calendar className="h-4 w-4" /> {t("Book Appointment")}
                 </button>
                 <div className="space-y-1.5 text-xs text-slate-400 text-left pl-2">
                   <p className="font-medium text-slate-650">📍 Nariman Point, Mumbai</p>

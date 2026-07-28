@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { AppointmentProvider } from "@/context/AppointmentContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
@@ -102,19 +103,21 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-brand-bg text-brand-text">
-        <AppointmentProvider>
-          <PageTransition />
-          <div className="w-full overflow-x-hidden relative flex flex-col min-h-screen">
-            <Navbar />
-            {/* Main content wrapper with padding for navbar spacing */}
-            <main className="flex-grow pt-[72px] lg:pt-[80px]">
-              {children}
-            </main>
-            <Footer />
-            <FloatingCTA />
-            <AppointmentModal />
-          </div>
-        </AppointmentProvider>
+        <LanguageProvider>
+          <AppointmentProvider>
+            <PageTransition />
+            <div className="w-full overflow-x-hidden relative flex flex-col min-h-screen">
+              <Navbar />
+              {/* Main content wrapper with padding for navbar spacing */}
+              <main className="flex-grow pt-[72px] lg:pt-[80px]">
+                {children}
+              </main>
+              <Footer />
+              <FloatingCTA />
+              <AppointmentModal />
+            </div>
+          </AppointmentProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

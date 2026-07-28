@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle, ChevronRight, ChevronLeft, Sparkles } from "lucide-react";
 import treatmentsData from "@/data/treatments.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface BookingFormProps {
   onSuccess?: () => void;
@@ -11,6 +12,7 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ onSuccess, preselectedTreatment }: BookingFormProps) {
+  const { t, language } = useLanguage();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     category: "",
@@ -59,7 +61,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
       if (futureDate.getDay() !== 0) { // Exclude Sundays
         dates.push({
           value: futureDate.toISOString().split("T")[0],
-          label: futureDate.toLocaleDateString("en-IN", {
+          label: futureDate.toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
             weekday: "short",
             day: "numeric",
             month: "short",
@@ -105,21 +107,21 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
   const validateStep = () => {
     const newErrors: Record<string, string> = {};
     if (step === 1) {
-      if (!formData.treatment) newErrors.treatment = "Please select a treatment service";
+      if (!formData.treatment) newErrors.treatment = language === "hi" ? "कृपया एक उपचार सेवा चुनें" : "Please select a treatment service";
     } else if (step === 2) {
-      if (!formData.date) newErrors.date = "Please select an appointment date";
-      if (!formData.timeSlot) newErrors.timeSlot = "Please choose a preferred time slot";
+      if (!formData.date) newErrors.date = language === "hi" ? "कृपया अपॉइंटमेंट की तारीख चुनें" : "Please select an appointment date";
+      if (!formData.timeSlot) newErrors.timeSlot = language === "hi" ? "कृपया एक समय स्लॉट चुनें" : "Please choose a preferred time slot";
     } else if (step === 3) {
-      if (!formData.name.trim()) newErrors.name = "Full name is required";
+      if (!formData.name.trim()) newErrors.name = language === "hi" ? "पूरा नाम आवश्यक है" : "Full name is required";
       if (!formData.phone.trim()) {
-        newErrors.phone = "Phone number is required";
+        newErrors.phone = language === "hi" ? "फ़ोन नंबर आवश्यक है" : "Phone number is required";
       } else if (!/^\d{10}$/.test(formData.phone.replace(/[\s-+]/g, ""))) {
-        newErrors.phone = "Please enter a valid 10-digit phone number";
+        newErrors.phone = language === "hi" ? "कृपया एक मान्य 10-अंकीय फ़ोन नंबर दर्ज करें" : "Please enter a valid 10-digit phone number";
       }
       if (!formData.email.trim()) {
-        newErrors.email = "Email address is required";
+        newErrors.email = language === "hi" ? "ईमेल पता आवश्यक है" : "Email address is required";
       } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "Please enter a valid email address";
+        newErrors.email = language === "hi" ? "कृपया एक मान्य ईमेल पता दर्ज करें" : "Please enter a valid email address";
       }
     }
     setErrors(newErrors);
@@ -149,7 +151,8 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
     }
   };
 
-  const selectedTreatmentName = treatmentsData.find((t) => t.slug === formData.treatment)?.title || "";
+  const selectedTreatmentObject = treatmentsData.find((t) => t.slug === formData.treatment);
+  const selectedTreatmentName = selectedTreatmentObject ? t(selectedTreatmentObject.title) : "";
 
   return (
     <div className="w-full max-w-2xl mx-auto bg-brand-card rounded-3xl border border-accent/40 shadow-luxury overflow-hidden">
@@ -157,11 +160,13 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
       {step < 4 && (
         <div className="bg-gradient-to-r from-primary/5 to-secondary/5 px-8 py-6 border-b border-accent/30 flex justify-between items-center">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">Step {step} of 3</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+              {t("Step")} {step} {t("of")} 3
+            </span>
             <h3 className="text-lg font-semibold text-slate-800">
-              {step === 1 && "Select Treatment"}
-              {step === 2 && "Choose Date & Time"}
-              {step === 3 && "Personal Information"}
+              {step === 1 && t("Select Treatment")}
+              {step === 2 && t("Choose Date & Time")}
+              {step === 3 && t("Personal Information")}
             </h3>
           </div>
           <div className="flex gap-1.5">
@@ -189,7 +194,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
             >
               {/* Category Filter */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-2">Category Filter</label>
+                <label className="block text-sm font-medium text-slate-600 mb-2">{t("Category Filter")}</label>
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
@@ -200,7 +205,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                         : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                     }`}
                   >
-                    All Services
+                    {t("All Services")}
                   </button>
                   {categories.map((cat) => (
                     <button
@@ -213,7 +218,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                           : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                       }`}
                     >
-                      {cat}
+                      {t(cat)}
                     </button>
                   ))}
                 </div>
@@ -221,28 +226,28 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
               {/* Treatments Selector Grid */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-3">Select Specific Service</label>
+                <label className="block text-sm font-medium text-slate-600 mb-3">{t("Select Specific Service")}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-64 overflow-y-auto pr-2 border border-slate-100 rounded-2xl p-2 bg-slate-50/50">
-                  {filteredTreatments.map((t) => (
+                  {filteredTreatments.map((tr) => (
                     <div
-                      key={t.slug}
-                      onClick={() => handleSelectTreatment(t.slug, t.category)}
+                      key={tr.slug}
+                      onClick={() => handleSelectTreatment(tr.slug, tr.category)}
                       className={`p-4 rounded-xl border cursor-pointer transition-all duration-200 flex flex-col justify-between ${
-                        formData.treatment === t.slug
+                        formData.treatment === tr.slug
                           ? "bg-primary/5 border-primary shadow-sm"
                           : "bg-white border-slate-200 hover:border-secondary/40"
                       }`}
                     >
                       <div>
                         <div className="flex justify-between items-start">
-                          <h4 className="font-medium text-sm text-slate-800">{t.title}</h4>
-                          {formData.treatment === t.slug && (
+                          <h4 className="font-medium text-sm text-slate-800">{t(tr.title)}</h4>
+                          {formData.treatment === tr.slug && (
                             <span className="h-4 w-4 bg-primary rounded-full flex items-center justify-center text-[10px] text-white">✓</span>
                           )}
                         </div>
-                        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{t.shortDescription}</p>
+                        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{t(tr.shortDescription)}</p>
                       </div>
-                      <span className="text-[10px] text-secondary font-semibold uppercase tracking-wider mt-3 block">{t.category}</span>
+                      <span className="text-[10px] text-secondary font-semibold uppercase tracking-wider mt-3 block">{t(tr.category)}</span>
                     </div>
                   ))}
                 </div>
@@ -255,7 +260,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   onClick={nextStep}
                   className="px-6 py-3 rounded-full text-sm font-medium text-white btn-gradient flex items-center gap-2 cursor-pointer"
                 >
-                  Continue <ChevronRight className="h-4 w-4" />
+                  {t("Continue")} <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             </motion.div>
@@ -276,14 +281,14 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-800">Dr. Aryan Sharma</h4>
-                  <p className="text-xs text-secondary">MD - Dermatology | Hair & Aesthetic Specialist</p>
+                  <p className="text-xs text-secondary">{t("MD - Dermatology | Hair & Aesthetic Specialist") || "MD - त्वचा रोग | बाल और एस्थेटिक विशेषज्ञ"}</p>
                 </div>
               </div>
 
               {/* Date Selection */}
               <div>
                 <label className="block text-sm font-medium text-slate-600 mb-2 flex items-center gap-1.5">
-                  <Calendar className="h-4 w-4 text-primary" /> Select Appointment Date
+                  <Calendar className="h-4 w-4 text-primary" /> {t("Select Appointment Date")}
                 </label>
                 <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                   {getAvailableDates().map((d) => (
@@ -307,7 +312,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               {/* Time Slot Selection */}
               <div>
                 <label className="block text-sm font-medium text-slate-600 mb-2 flex items-center gap-1.5">
-                  <Clock className="h-4 w-4 text-primary" /> Select Preferred Time Slot
+                  <Clock className="h-4 w-4 text-primary" /> {t("Select Preferred Time Slot")}
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {timeSlots.map((slot) => (
@@ -334,14 +339,14 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   onClick={prevStep}
                   className="px-5 py-3 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
                 >
-                  <ChevronLeft className="h-4 w-4" /> Back
+                  <ChevronLeft className="h-4 w-4" /> {t("Back")}
                 </button>
                 <button
                   type="button"
                   onClick={nextStep}
                   className="px-6 py-3 rounded-full text-sm font-medium text-white btn-gradient flex items-center gap-2 cursor-pointer"
                 >
-                  Continue <ChevronRight className="h-4 w-4" />
+                  {t("Continue")} <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             </motion.div>
@@ -359,14 +364,14 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
-                    <User className="h-4 w-4 text-primary" /> Full Name
+                    <User className="h-4 w-4 text-primary" /> {t("Full Name")}
                   </label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Enter your full name"
+                    placeholder={t("Enter your full name")}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
                   />
                   {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
@@ -375,14 +380,14 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
-                      <Phone className="h-4 w-4 text-primary" /> Mobile Number
+                      <Phone className="h-4 w-4 text-primary" /> {t("Mobile Number")}
                     </label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="10-digit mobile number"
+                      placeholder={t("10-digit mobile number")}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
                     />
                     {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
@@ -390,7 +395,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
                   <div>
                     <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
-                      <Mail className="h-4 w-4 text-primary" /> Email Address
+                      <Mail className="h-4 w-4 text-primary" /> {t("Email Address")}
                     </label>
                     <input
                       type="email"
@@ -406,14 +411,14 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
                 <div>
                   <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
-                    <FileText className="h-4 w-4 text-primary" /> Symptoms or Special Requests (Optional)
+                    <FileText className="h-4 w-4 text-primary" /> {t("Symptoms or Special Requests (Optional)")}
                   </label>
                   <textarea
                     name="notes"
                     value={formData.notes}
                     onChange={handleInputChange}
                     rows={3}
-                    placeholder="Briefly describe your skin/hair concern or any medical conditions..."
+                    placeholder={t("Briefly describe your skin/hair concern or any medical conditions...")}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50 resize-none"
                   />
                 </div>
@@ -421,9 +426,24 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
               {/* Summary card */}
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 text-xs text-slate-600">
-                <p className="flex justify-between"><span className="font-medium">Selected Service:</span> <span className="font-semibold text-slate-800">{selectedTreatmentName}</span></p>
-                <p className="flex justify-between"><span className="font-medium">Specialist:</span> <span className="font-semibold text-slate-800">{formData.doctor}</span></p>
-                <p className="flex justify-between"><span className="font-medium">Date & Time:</span> <span className="font-semibold text-slate-800">{formData.date} at {formData.timeSlot.split(" - ")[0]}</span></p>
+                <p className="flex justify-between">
+                  <span className="font-medium">{t("Selected Service:")}</span> 
+                  <span className="font-semibold text-slate-800">{selectedTreatmentName}</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="font-medium">{t("Specialist:")}</span> 
+                  <span className="font-semibold text-slate-800">{formData.doctor}</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="font-medium">{t("Date & Time:")}</span> 
+                  <span className="font-semibold text-slate-800">
+                    {new Date(formData.date).toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })} {t("at")} {formData.timeSlot.split(" - ")[0]}
+                  </span>
+                </p>
               </div>
 
               <div className="flex justify-between pt-4 border-t border-slate-100">
@@ -432,13 +452,13 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   onClick={prevStep}
                   className="px-5 py-3 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
                 >
-                  <ChevronLeft className="h-4 w-4" /> Back
+                  <ChevronLeft className="h-4 w-4" /> {t("Back")}
                 </button>
                 <button
                   type="submit"
                   className="px-6 py-3 rounded-full text-sm font-semibold text-white btn-gradient flex items-center gap-2 cursor-pointer shadow-md"
                 >
-                  Confirm & Schedule <CheckCircle className="h-4 w-4" />
+                  {t("Confirm & Book Slot") || t("Confirm & Schedule")} <CheckCircle className="h-4 w-4" />
                 </button>
               </div>
             </motion.div>
@@ -456,25 +476,25 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               </div>
               
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold text-slate-800">Booking Confirmed!</h3>
+                <h3 className="text-2xl font-bold text-slate-800">{t("Appointment Confirmed!")}</h3>
                 <p className="text-sm text-slate-500 max-w-md mx-auto">
-                  Thank you, <span className="font-semibold text-slate-700">{formData.name}</span>. Your luxury consultation has been successfully scheduled.
+                  {t("Thank you") || "धन्यवाद"}, <span className="font-semibold text-slate-700">{formData.name}</span>. {t("Your slot has been reserved successfully. Our coordinator will contact you shortly to confirm travel and directions.") || t("Your luxury consultation has been successfully scheduled.")}
                 </p>
               </div>
 
               <div className="bg-primary/5 border border-primary/20 p-5 rounded-2xl max-w-md mx-auto space-y-3 text-sm text-slate-700">
                 <div className="flex justify-between pb-2 border-b border-primary/10">
-                  <span className="text-slate-500">Booking Reference</span>
+                  <span className="text-slate-500">{t("Booking Reference")}</span>
                   <span className="font-bold text-primary tracking-wider">{bookingCode}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Procedure</span>
+                  <span className="text-slate-500">{t("Procedure")}</span>
                   <span className="font-medium text-slate-800 text-right">{selectedTreatmentName}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Date</span>
+                  <span className="text-slate-500">{t("Date")}</span>
                   <span className="font-medium text-slate-800">
-                    {new Date(formData.date).toLocaleDateString("en-IN", {
+                    {new Date(formData.date).toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
                       weekday: "long",
                       day: "numeric",
                       month: "long",
@@ -483,17 +503,17 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Time Window</span>
+                  <span className="text-slate-500">{t("Time Window")}</span>
                   <span className="font-medium text-slate-800">{formData.timeSlot}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Clinic Coordinator</span>
+                  <span className="text-slate-500">{t("Clinic Coordinator")}</span>
                   <span className="font-medium text-slate-800">{formData.doctor}</span>
                 </div>
               </div>
 
               <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                A confirmation SMS and WhatsApp invite with clinic location details and pre-procedure guidelines has been sent to your registered number.
+                {t("A confirmation SMS and WhatsApp invite with clinic location details and pre-procedure guidelines has been sent to your registered number.") || "एक पुष्टि संदेश और व्हाट्सएप आमंत्रण आपके पंजीकृत नंबर पर भेज दिया गया है।"}
               </p>
 
               <div className="pt-2">
@@ -515,7 +535,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   }}
                   className="px-6 py-2.5 rounded-full text-xs font-semibold text-primary border border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
                 >
-                  Schedule Another Appointment
+                  {t("Schedule Another Appointment") || "दूसरा अपॉइंटमेंट बुक करें"}
                 </button>
               </div>
             </motion.div>

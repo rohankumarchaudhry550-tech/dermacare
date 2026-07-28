@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { MessageSquare, Phone, ArrowUp, Calendar } from "lucide-react";
 import { useAppointment } from "@/context/AppointmentContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FloatingCTA() {
   const { openModal } = useAppointment();
+  const { t } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -56,13 +58,13 @@ export default function FloatingCTA() {
           href="tel:+912255567890"
           className="flex-1 py-3 border border-primary/30 text-primary hover:bg-primary/5 font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
         >
-          <Phone className="h-4 w-4" /> Call Clinic
+          <Phone className="h-4 w-4" /> {t("Call Clinic")}
         </a>
         <button
           onClick={openModal}
           className="flex-1 py-3 text-white btn-gradient font-bold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
         >
-          <Calendar className="h-4 w-4" /> Book Appt
+          <Calendar className="h-4 w-4" /> {t("Book Appt")}
         </button>
       </div>
     </>

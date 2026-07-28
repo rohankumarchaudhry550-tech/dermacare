@@ -5,9 +5,11 @@ import Link from "next/link";
 import { Search, ArrowRight, Calendar, Sparkles, Filter } from "lucide-react";
 import treatmentsData from "@/data/treatments.json";
 import { useAppointment } from "@/context/AppointmentContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TreatmentsPage() {
   const { openModal } = useAppointment();
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -30,12 +32,12 @@ export default function TreatmentsPage() {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Page Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">Clinical Specialties</span>
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest block">{t("Clinical Specialties")}</span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-poppins">
-            Treatments & Clinical Services
+            {t("Treatments & Clinical Services")}
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-            Explore our FDA-approved clinical procedures, advanced laser technologies, and medical-grade aesthetic treatments tailored by Dr. Aryan Sharma.
+            {t("Explore our FDA-approved clinical procedures, advanced laser technologies, and medical-grade aesthetic treatments tailored by Dr. Aryan Sharma.")}
           </p>
         </div>
 
@@ -47,7 +49,7 @@ export default function TreatmentsPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search treatments (e.g., acne, laser, PRP, filler...)"
+                placeholder={t("Search treatments (e.g., acne, laser, PRP, filler...)")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-11 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
@@ -56,7 +58,7 @@ export default function TreatmentsPage() {
             
             {/* Filter label for desktop */}
             <div className="hidden md:flex items-center gap-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider pl-2">
-              <Filter className="h-4 w-4" /> Filter Categories
+              <Filter className="h-4 w-4" /> {t("Filter Categories")}
             </div>
           </div>
 
@@ -73,7 +75,7 @@ export default function TreatmentsPage() {
                     : "bg-accent/40 text-primary-dark hover:bg-accent/60"
                 }`}
               >
-                {cat}
+                {cat === "All" ? t("All Services") : t(cat)}
               </button>
             ))}
           </div>
@@ -91,15 +93,15 @@ export default function TreatmentsPage() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-start">
                       <span className="text-[9px] uppercase tracking-wider font-semibold text-secondary bg-accent/45 px-2.5 py-0.5 rounded-full block">
-                        {treatment.category}
+                        {t(treatment.category)}
                       </span>
                       <Sparkles className="h-4 w-4 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <h3 className="font-poppins font-bold text-lg text-slate-800 group-hover:text-primary transition-colors">
-                      {treatment.title}
+                      {t(treatment.title)}
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
-                      {treatment.shortDescription}
+                      {t(treatment.shortDescription)}
                     </p>
                   </div>
 
@@ -108,7 +110,7 @@ export default function TreatmentsPage() {
                       onClick={openModal}
                       className="text-[10px] font-bold text-secondary hover:text-primary transition-colors cursor-pointer"
                     >
-                      Book Consultation
+                      {t("Book Consultation")}
                     </button>
                     <Link
                       href={`/treatments/${treatment.slug}`}
@@ -122,8 +124,8 @@ export default function TreatmentsPage() {
             </div>
           ) : (
             <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-slate-200 p-8">
-              <h3 className="font-poppins font-bold text-slate-800 text-lg">No treatments found</h3>
-              <p className="text-slate-500 text-xs mt-1">Try adjusting your filters or search keywords.</p>
+              <h3 className="font-poppins font-bold text-slate-800 text-lg">{t("No treatments found")}</h3>
+              <p className="text-slate-500 text-xs mt-1">{t("Try adjusting your filters or search keywords.")}</p>
               <button
                 onClick={() => {
                   setSearchQuery("");
@@ -131,7 +133,7 @@ export default function TreatmentsPage() {
                 }}
                 className="mt-4 px-5 py-2.5 rounded-full text-xs font-semibold text-white btn-gradient shadow cursor-pointer"
               >
-                Clear Search & Filters
+                {t("Clear Search & Filters")}
               </button>
             </div>
           )}
@@ -140,17 +142,17 @@ export default function TreatmentsPage() {
         {/* Global CTA Section */}
         <section className="bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-center gap-8 shadow-luxury">
           <div className="space-y-3 text-left max-w-lg">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest block">Personalized Care</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-poppins text-white">Not sure which treatment fits you?</h2>
+            <span className="text-xs font-bold text-accent uppercase tracking-widest block">{t("Personalized Care") || t("Clinic values")}</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-poppins text-white">{t("Not sure which treatment fits you?")}</h2>
             <p className="text-teal-55 text-xs leading-relaxed">
-              Schedule a comprehensive digital skin analysis consultation. Our specialists will diagnose your conditions and draft a customized clinical layout.
+              {t("Schedule a comprehensive digital skin analysis consultation. Our specialists will diagnose your conditions and draft a customized clinical layout.")}
             </p>
           </div>
           <button
             onClick={openModal}
             className="px-8 py-4 rounded-full font-bold text-sm bg-white text-primary hover:bg-accent transition-colors flex items-center gap-2 shrink-0 cursor-pointer shadow-md"
           >
-            Schedule Consultation <Calendar className="h-4 w-4" />
+            {t("Schedule Consultation") || t("Book Appointment")} <Calendar className="h-4 w-4" />
           </button>
         </section>
       </div>
