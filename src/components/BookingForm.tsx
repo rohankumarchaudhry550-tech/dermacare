@@ -3,13 +3,45 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle, ChevronRight, ChevronLeft, Sparkles } from "lucide-react";
-import treatmentsData from "@/data/treatments.json";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface BookingFormProps {
   onSuccess?: () => void;
   preselectedTreatment?: string;
 }
+
+const vitiligoTreatments = [
+  {
+    slug: "mktp-surgery",
+    title: "Melanocyte Transfer (MKTP Surgery)",
+    category: "Surgical",
+    shortDescription: "A state-of-the-art cellular transplant procedure. We extract healthy melanocyte and keratinocyte skin cells from a donor area and graft them onto stable white patches to restore pigment naturally, even in large areas."
+  },
+  {
+    slug: "excimer-laser",
+    title: "Excimer Laser Therapy (308nm)",
+    category: "Laser & Light",
+    shortDescription: "US-FDA approved target phototherapy delivering focused monochromatic UVB light. Ideal for localized white spots on the face, neck, and hands, stimulating melanin cells without affecting healthy skin."
+  },
+  {
+    slug: "nb-uvb-cabin",
+    title: "Narrowband UVB Cabin",
+    category: "Laser & Light",
+    shortDescription: "Full-body phototherapy chamber emitting a precise 311nm UV light wavelength. Recommended for widespread vitiligo to halt disease progression and promote uniform repigmentation."
+  },
+  {
+    slug: "epidermal-grafting",
+    title: "Epidermal Grafting (Suction Blister)",
+    category: "Surgical",
+    shortDescription: "A highly successful surgical grafting method. Healthy skin blisters are created on a donor site and transferred onto prepared white patches, ensuring seamless healing and uniform color match."
+  },
+  {
+    slug: "jak-inhibitors",
+    title: "JAK Inhibitors & Topicals",
+    category: "Medical Therapy",
+    shortDescription: "Advanced medical-grade prescriptions including JAK Inhibitors (Ruxolitinib) and immunomodulatory topicals to calm localized immune response and encourage skin barrier repigmentation."
+  }
+];
 
 export default function BookingForm({ onSuccess, preselectedTreatment }: BookingFormProps) {
   const { t, language } = useLanguage();
@@ -29,18 +61,18 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [bookingCode, setBookingCode] = useState("");
 
-  // Categories extracted from treatments
-  const categories = Array.from(new Set(treatmentsData.map((t) => t.category)));
+  // Categories extracted from vitiligo treatments
+  const categories = Array.from(new Set(vitiligoTreatments.map((t) => t.category)));
 
   // Filtered treatments based on selected category
-  const filteredTreatments = treatmentsData.filter(
-    (t) => !formData.category || t.category === formData.category
+  const filteredTreatments = vitiligoTreatments.filter(
+    (tr) => !formData.category || tr.category === formData.category
   );
 
   // If preselected treatment is provided, set the category automatically
   useEffect(() => {
     if (preselectedTreatment) {
-      const treatmentObj = treatmentsData.find((t) => t.slug === preselectedTreatment);
+      const treatmentObj = vitiligoTreatments.find((tr) => tr.slug === preselectedTreatment);
       if (treatmentObj) {
         setFormData((prev) => ({
           ...prev,
@@ -141,17 +173,16 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep()) {
-      // Generate booking code: DC-XXXXX
       const code = `DC-${Math.floor(10000 + Math.random() * 90000)}`;
       setBookingCode(code);
       setStep(4);
       if (onSuccess) {
-        setTimeout(onSuccess, 5000); // Close modal automatically after 5s if inside modal
+        setTimeout(onSuccess, 5000);
       }
     }
   };
 
-  const selectedTreatmentObject = treatmentsData.find((t) => t.slug === formData.treatment);
+  const selectedTreatmentObject = vitiligoTreatments.find((tr) => tr.slug === formData.treatment);
   const selectedTreatmentName = selectedTreatmentObject ? t(selectedTreatmentObject.title) : "";
 
   return (
@@ -194,12 +225,12 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
             >
               {/* Category Filter */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-2">{t("Category Filter")}</label>
+                <label className="block text-sm font-medium text-slate-650 mb-2">{t("Category Filter")}</label>
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
                     onClick={() => setFormData((prev) => ({ ...prev, category: "", treatment: "" }))}
-                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all ${
+                    className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
                       !formData.category
                         ? "bg-primary text-white"
                         : "bg-accent/40 text-primary-dark hover:bg-accent/60"
@@ -212,7 +243,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                       type="button"
                       key={cat}
                       onClick={() => setFormData((prev) => ({ ...prev, category: cat, treatment: "" }))}
-                      className={`px-4 py-2 rounded-full text-xs font-medium transition-all ${
+                      className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
                         formData.category === cat
                           ? "bg-primary text-white"
                           : "bg-accent/40 text-primary-dark hover:bg-accent/60"
@@ -226,7 +257,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
               {/* Treatments Selector Grid */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-3">{t("Select Specific Service")}</label>
+                <label className="block text-sm font-medium text-slate-650 mb-3">{t("Select Specific Service")}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-64 overflow-y-auto pr-2 border border-slate-100 rounded-2xl p-2 bg-slate-50/50">
                   {filteredTreatments.map((tr) => (
                     <div
@@ -245,7 +276,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                             <span className="h-4 w-4 bg-primary rounded-full flex items-center justify-center text-[10px] text-white">✓</span>
                           )}
                         </div>
-                        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{t(tr.shortDescription)}</p>
+                        <p className="text-xs text-slate-550 mt-1 line-clamp-2">{t(tr.shortDescription)}</p>
                       </div>
                       <span className="text-[10px] text-secondary font-semibold uppercase tracking-wider mt-3 block">{t(tr.category)}</span>
                     </div>
@@ -281,13 +312,13 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-800">Dr. Aryan Sharma</h4>
-                  <p className="text-xs text-secondary">{t("MD - Dermatology | Hair & Aesthetic Specialist") || "MD - त्वचा रोग | बाल और एस्थेटिक विशेषज्ञ"}</p>
+                  <p className="text-xs text-secondary">{t("MD - Dermatology | Vitiligo & Leucoderma Specialist") || "MD - त्वचा रोग | विटिलिगो और ल्यूकोडरमा विशेषज्ञ"}</p>
                 </div>
               </div>
 
               {/* Date Selection */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-2 flex items-center gap-1.5">
+                <label className="block text-sm font-medium text-slate-650 mb-2 flex items-center gap-1.5">
                   <Calendar className="h-4 w-4 text-primary" /> {t("Select Appointment Date")}
                 </label>
                 <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
@@ -311,7 +342,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
               {/* Time Slot Selection */}
               <div>
-                <label className="block text-sm font-medium text-slate-600 mb-2 flex items-center gap-1.5">
+                <label className="block text-sm font-medium text-slate-650 mb-2 flex items-center gap-1.5">
                   <Clock className="h-4 w-4 text-primary" /> {t("Select Preferred Time Slot")}
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -337,7 +368,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="px-5 py-3 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-3 rounded-full text-sm font-medium text-slate-650 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
                 >
                   <ChevronLeft className="h-4 w-4" /> {t("Back")}
                 </button>
@@ -363,7 +394,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               {/* Form Input Fields */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
+                  <label className="block text-sm font-medium text-slate-655 mb-1 flex items-center gap-1.5">
                     <User className="h-4 w-4 text-primary" /> {t("Full Name")}
                   </label>
                   <input
@@ -371,7 +402,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder={t("Enter your full name")}
+                    placeholder={t("Enter your name")}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
                   />
                   {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
@@ -379,8 +410,8 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
-                      <Phone className="h-4 w-4 text-primary" /> {t("Mobile Number")}
+                    <label className="block text-sm font-medium text-slate-655 mb-1 flex items-center gap-1.5">
+                      <Phone className="h-4 w-4 text-primary" /> {t("Phone Number")}
                     </label>
                     <input
                       type="tel"
@@ -394,7 +425,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
+                    <label className="block text-sm font-medium text-slate-655 mb-1 flex items-center gap-1.5">
                       <Mail className="h-4 w-4 text-primary" /> {t("Email Address")}
                     </label>
                     <input
@@ -410,7 +441,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 mb-1 flex items-center gap-1.5">
+                  <label className="block text-sm font-medium text-slate-655 mb-1 flex items-center gap-1.5">
                     <FileText className="h-4 w-4 text-primary" /> {t("Symptoms or Special Requests (Optional)")}
                   </label>
                   <textarea
@@ -425,7 +456,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               </div>
 
               {/* Summary card */}
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 text-xs text-slate-600">
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 text-xs text-slate-655">
                 <p className="flex justify-between">
                   <span className="font-medium">{t("Selected Service:")}</span> 
                   <span className="font-semibold text-slate-800">{selectedTreatmentName}</span>
@@ -450,7 +481,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="px-5 py-3 rounded-full text-sm font-medium text-slate-600 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-3 rounded-full text-sm font-medium text-slate-655 hover:bg-slate-100 flex items-center gap-2 cursor-pointer"
                 >
                   <ChevronLeft className="h-4 w-4" /> {t("Back")}
                 </button>
@@ -458,7 +489,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   type="submit"
                   className="px-6 py-3 rounded-full text-sm font-semibold text-white btn-gradient flex items-center gap-2 cursor-pointer shadow-md"
                 >
-                  {t("Confirm & Book Slot") || t("Confirm & Schedule")} <CheckCircle className="h-4 w-4" />
+                  {t("Confirm & Book Slot")} <CheckCircle className="h-4 w-4" />
                 </button>
               </div>
             </motion.div>
@@ -478,7 +509,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
               <div className="space-y-2">
                 <h3 className="text-2xl font-bold text-slate-800">{t("Appointment Confirmed!")}</h3>
                 <p className="text-sm text-slate-500 max-w-md mx-auto">
-                  {t("Thank you") || "धन्यवाद"}, <span className="font-semibold text-slate-700">{formData.name}</span>. {t("Your slot has been reserved successfully. Our coordinator will contact you shortly to confirm travel and directions.") || t("Your luxury consultation has been successfully scheduled.")}
+                  {t("Thank you") || "धन्यवाद"}, <span className="font-semibold text-slate-700">{formData.name}</span>. {t("Your slot has been reserved successfully. Our coordinator will contact you shortly to confirm travel and directions.")}
                 </p>
               </div>
 
@@ -512,10 +543,6 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                 </div>
               </div>
 
-              <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                {t("A confirmation SMS and WhatsApp invite with clinic location details and pre-procedure guidelines has been sent to your registered number.") || "एक पुष्टि संदेश और व्हाट्सएप आमंत्रण आपके पंजीकृत नंबर पर भेज दिया गया है।"}
-              </p>
-
               <div className="pt-2">
                 <button
                   type="button"
@@ -535,7 +562,7 @@ export default function BookingForm({ onSuccess, preselectedTreatment }: Booking
                   }}
                   className="px-6 py-2.5 rounded-full text-xs font-semibold text-primary border border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
                 >
-                  {t("Schedule Another Appointment") || "दूसरा अपॉइंटमेंट बुक करें"}
+                  {t("Schedule Another Appointment")}
                 </button>
               </div>
             </motion.div>

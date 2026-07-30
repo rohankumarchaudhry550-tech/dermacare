@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Phone, Mail, MapPin, Clock, Send, ShieldAlert, Check } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, ShieldAlert, Check } from "lucide-react";
 import BrandLogo from "@/components/ui/BrandLogo";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -21,24 +21,35 @@ export default function Footer() {
   };
 
   const topTreatments = [
-    { name: "Acne Scar Removal", path: "/treatments/acne-scar-removal" },
-    { name: "PRP & GFC Hair Restoration", path: "/treatments/prp-therapy" },
-    { name: "Laser Hair Removal", path: "/treatments/laser-hair-removal" },
-    { name: "Botox & Dermal Fillers", path: "/treatments/botox" },
-    { name: "Bespoke Hydra Facial", path: "/treatments/hydra-facial" },
-    { name: "Anti-Aging Skin boosters", path: "/treatments/anti-aging" },
+    { name: "Melanocyte Transfer (MKTP Surgery)", path: "#treatments" },
+    { name: "Excimer Laser Therapy (308nm)", path: "#treatments" },
+    { name: "Narrowband UVB Cabin", path: "#treatments" },
+    { name: "Epidermal Grafting (Suction Blister)", path: "#treatments" },
+    { name: "JAK Inhibitors & Topicals", path: "#treatments" }
   ];
 
   const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Dr. Aryan", path: "/about" },
-    { name: "Treatments", path: "/treatments" },
-    { name: "Conditions Index", path: "/conditions" },
-    { name: "Before & After Gallery", path: "/gallery" },
-    { name: "Patient Testimonials", path: "/reviews" },
-    { name: "Medical Blog", path: "/blog" },
-    { name: "Contact & Booking", path: "/contact" },
+    { name: "Home", path: "#home" },
+    { name: "About Doctor", path: "#about" },
+    { name: "Treatments", path: "#treatments" },
+    { name: "Understanding Vitiligo", path: "#understanding" },
+    { name: "Results Gallery", path: "#gallery" },
+    { name: "Patient Reviews", path: "#reviews" },
+    { name: "Contact & Booking", path: "#contact" }
   ];
+
+  const handleScrollTo = (e: React.MouseEvent, path: string) => {
+    e.preventDefault();
+    const targetId = path.replace("#", "");
+    const el = document.getElementById(targetId);
+    if (el) {
+      const topOffset = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({
+        top: topOffset,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <footer className="bg-slate-900 text-slate-300 pt-20 pb-8 border-t border-slate-800 relative overflow-hidden">
@@ -49,7 +60,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
         {/* Column 1: Info & Newsletter */}
         <div className="space-y-6">
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="#home" onClick={(e) => handleScrollTo(e, "#home")} className="flex items-center gap-2 group">
             <div className="h-10 w-10 flex items-center justify-center">
               <BrandLogo className="h-full w-full text-accent" />
             </div>
@@ -57,13 +68,13 @@ export default function Footer() {
               <span className="font-poppins font-extrabold text-xl tracking-tight text-white flex items-center gap-0.5">
                 DermaCare<span className="text-accent font-light">+</span>
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-accent font-bold block -mt-1 opacity-80">
-                {t("Aesthetic & Skin Clinic")}
+              <span className="text-[8px] uppercase tracking-wider text-accent font-semibold block mt-0.5 opacity-80">
+                {t("Vitiligo & Leucoderma Restoration Clinic")}
               </span>
             </div>
           </Link>
           <p className="text-xs text-slate-400 leading-relaxed">
-            {t("World-class medical dermatology and premium aesthetic procedures delivered by board-certified dermatologists using FDA-approved technology.")}
+            {t("Led by Dr. Aryan Sharma, a board-certified dermatologist trained at AIIMS New Delhi. We specialize in Melanocyte-Keratinocyte Transplant (MKTP) and Excimer Lasers to restore your skin's natural melanin.")}
           </p>
 
           <form onSubmit={handleSubscribe} className="space-y-2">
@@ -98,12 +109,13 @@ export default function Footer() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
             {quickLinks.map((link, idx) => (
               <li key={idx}>
-                <Link
+                <a
                   href={link.path}
+                  onClick={(e) => handleScrollTo(e, link.path)}
                   className="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
                 >
                   <span className="h-1 w-1 bg-secondary rounded-full" /> {t(link.name)}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -117,12 +129,13 @@ export default function Footer() {
           <ul className="space-y-3">
             {topTreatments.map((treatment, idx) => (
               <li key={idx}>
-                <Link
+                <a
                   href={treatment.path}
+                  onClick={(e) => handleScrollTo(e, treatment.path)}
                   className="text-xs text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
                 >
                   <span className="h-1 w-1 bg-primary rounded-full" /> {t(treatment.name)}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -158,13 +171,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Emergency support panel */}
-          <div className="bg-red-950/20 border border-red-900/30 p-4 rounded-2xl flex gap-3 items-start">
-            <ShieldAlert className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+          {/* Valet Parking Information */}
+          <div className="bg-primary/10 border border-primary/20 p-4 rounded-2xl flex gap-3 items-start">
+            <ShieldAlert className="h-5 w-5 text-secondary shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs font-bold text-red-400 uppercase tracking-wider">{t("Emergency Skin Allergy?")}</h5>
+              <h5 className="text-xs font-bold text-white uppercase tracking-wider">{t("Valet Parking Available")}</h5>
               <p className="text-[10px] text-slate-400 mt-1">
-                {t("Reach our on-duty clinician immediately at")} <span className="font-semibold text-white">+91 99999 88888</span>.
+                {t("Complimentary secure basement parking and elevator access direct to clinic lobby.")}
               </p>
             </div>
           </div>
@@ -178,7 +191,6 @@ export default function Footer() {
           <Link href="/privacy" className="hover:text-slate-400 transition-colors">{t("Privacy Policy")}</Link>
           <Link href="/terms" className="hover:text-slate-400 transition-colors">{t("Terms of Service")}</Link>
           <Link href="/disclaimer" className="hover:text-slate-400 transition-colors">{t("Medical Disclaimer")}</Link>
-          <Link href="/sitemap" className="hover:text-slate-400 transition-colors">{t("Sitemap")}</Link>
         </div>
       </div>
     </footer>
